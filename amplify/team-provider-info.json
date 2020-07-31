@@ -17,6 +17,9 @@
                     "appId": "d3s7ytx0ifkg3o",
                     "type": "cicd"
                 }
+            },
+            "auth": {
+                "financeserverlesscc9d1b82": {}
             }
         }
     }

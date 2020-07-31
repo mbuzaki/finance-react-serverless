@@ -24,6 +24,7 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import Notifications from "@material-ui/icons/Notifications";
 import Unarchive from "@material-ui/icons/Unarchive";
 import Language from "@material-ui/icons/Language";
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'; 
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
@@ -37,6 +38,14 @@ import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
 import RTLPage from "views/RTLPage/RTLPage.js";
 
 const dashboardRoutes = [
+  {
+    path: "/sign-in",
+    name: "Sign in",
+    rtlName: "لوحة القيادة",
+    icon: Person,
+    component: AmplifySignOut,
+    layout: "/admin"
+  },
   {
     path: "/dashboard",
     name: "Dashboard",

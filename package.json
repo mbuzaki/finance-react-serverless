@@ -41,7 +41,7 @@
   "bugs": {
     "url": "https://github.com/creativetimofficial/material-dashboard-react/issues"
   },
-  "homepage": "https://master.d3s7ytx0ifkg3o.amplifyapp.com/",
+  "homepage": "https://master.d3s7ytx0ifkg3o.amplifyapp.com/material-dashboard-react",
   "optionalDependencies": {
     "@types/googlemaps": "3.39.6",
     "@types/markerclustererplus": "2.1.33",
