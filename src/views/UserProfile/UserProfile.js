@@ -148,6 +148,7 @@ export default function UserProfile() {
             </CardBody>
             <CardFooter>
               <Button color="primary">Update Profile</Button>
+              <Button color="primary">Connect to Plaid</Button>
             </CardFooter>
           </Card>
         </GridItem>
