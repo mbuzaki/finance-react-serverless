@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "function": {
+      "firstAPILambda": [
+        "create",
+        "read",
+        "update"
+      ]
+    },
+    "api": {
+      "firstAPI": [
+        "create"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

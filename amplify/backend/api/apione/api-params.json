@@ -1,0 +1,41 @@
+{
+    "paths": [
+        {
+            "name": "/apiOneHW",
+            "lambdaFunction": "apiOneHelloWorld",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
+        }
+    ],
+    "resourceName": "apione",
+    "apiName": "apione",
+    "functionArns": [
+        {
+            "lambdaFunction": "apiOneHelloWorld"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-svrlsfinance-dev-104634-authRole",
+        "unAuthRoleName": "amplify-svrlsfinance-dev-104634-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "apiOneHelloWorld",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
