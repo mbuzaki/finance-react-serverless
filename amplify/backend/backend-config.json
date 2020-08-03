@@ -11,6 +11,28 @@
 			"providerPlugin": "awscloudformation",
 			"service": "Lambda",
 			"dependsOn": []
+		},
+		"apiOneHelloWorld": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "firstAPILambda",
+					"attributes": [
+						"Name"
+					]
+				},
+				{
+					"category": "api",
+					"resourceName": "firstAPI",
+					"attributes": [
+						"ApiName",
+						"ApiId"
+					]
+				}
+			]
 		}
 	},
 	"auth": {
@@ -27,6 +49,20 @@
 				{
 					"category": "function",
 					"resourceName": "firstAPILambda",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"apione": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "apiOneHelloWorld",
 					"attributes": [
 						"Name",
 						"Arn"
