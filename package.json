@@ -24,7 +24,8 @@
     "react-google-maps": "9.4.5",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
-    "react-swipeable-views": "0.13.9"
+    "react-swipeable-views": "0.13.9",
+    "serverless": "^1.78.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -47,7 +48,7 @@
   "bugs": {
     "url": "https://github.com/creativetimofficial/material-dashboard-react/issues"
   },
-  "homepage": "https://master.d7vxfm73xwkd.amplifyapp.com/admin/",
+  "homepage": "https://master.d7vxfm73xwkd.amplifyapp.com",
   "optionalDependencies": {
     "@types/googlemaps": "3.39.6",
     "@types/markerclustererplus": "2.1.33",
