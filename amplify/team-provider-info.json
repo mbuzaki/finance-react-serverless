@@ -1,0 +1,26 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-svrlsfinance-dev-104634-authRole",
+            "UnauthRoleArn": "arn:aws:iam::170976071768:role/amplify-svrlsfinance-dev-104634-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::170976071768:role/amplify-svrlsfinance-dev-104634-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-svrlsfinance-dev-104634-deployment",
+            "UnauthRoleName": "amplify-svrlsfinance-dev-104634-unauthRole",
+            "StackName": "amplify-svrlsfinance-dev-104634",
+            "StackId": "arn:aws:cloudformation:us-west-2:170976071768:stack/amplify-svrlsfinance-dev-104634/46b9a280-d5b1-11ea-a4ef-02d6a202b0c5",
+            "AmplifyAppId": "d330f3gzjc3mo3"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d330f3gzjc3mo3",
+                    "type": "cicd"
+                }
+            },
+            "auth": {
+                "cognitof9a5482d": {}
+            }
+        }
+    }
+}
