@@ -5,70 +5,12 @@
 			"type": "cicd"
 		}
 	},
-	"function": {
-		"firstAPILambda": {
-			"build": true,
-			"providerPlugin": "awscloudformation",
-			"service": "Lambda",
-			"dependsOn": []
-		},
-		"apiOneHelloWorld": {
-			"build": true,
-			"providerPlugin": "awscloudformation",
-			"service": "Lambda",
-			"dependsOn": [
-				{
-					"category": "function",
-					"resourceName": "firstAPILambda",
-					"attributes": [
-						"Name"
-					]
-				},
-				{
-					"category": "api",
-					"resourceName": "firstAPI",
-					"attributes": [
-						"ApiName",
-						"ApiId"
-					]
-				}
-			]
-		}
-	},
+	"function": {},
 	"auth": {
 		"cognitof9a5482d": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation"
 		}
 	},
-	"api": {
-		"firstAPI": {
-			"service": "API Gateway",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [
-				{
-					"category": "function",
-					"resourceName": "firstAPILambda",
-					"attributes": [
-						"Name",
-						"Arn"
-					]
-				}
-			]
-		},
-		"apione": {
-			"service": "API Gateway",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [
-				{
-					"category": "function",
-					"resourceName": "apiOneHelloWorld",
-					"attributes": [
-						"Name",
-						"Arn"
-					]
-				}
-			]
-		}
-	}
+	"api": {}
 }
