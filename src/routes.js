@@ -120,4 +120,4 @@ const dashboardRoutes = [
   }
 ];
 
-export default dashboardRoutes;
+export default withAuthenticator(dashboardRoutes);
