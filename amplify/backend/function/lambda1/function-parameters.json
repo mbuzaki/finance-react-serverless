@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "auth": {
+      "cognitof9a5482d": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

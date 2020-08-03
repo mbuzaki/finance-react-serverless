@@ -5,12 +5,42 @@
 			"type": "cicd"
 		}
 	},
-	"function": {},
+	"function": {
+		"lambda1": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "cognitof9a5482d",
+					"attributes": [
+						"UserPoolId"
+					]
+				}
+			]
+		}
+	},
 	"auth": {
 		"cognitof9a5482d": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation"
 		}
 	},
-	"api": {}
+	"api": {
+		"api1": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "lambda1",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	}
 }
