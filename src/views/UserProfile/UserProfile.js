@@ -42,7 +42,7 @@ export default function UserProfile() {
 
   async function callApi() {
     try {
-      const hw = await API.post('pyapi', '/pyplaid');
+      const hw = await API.get('pyapi', '/pyplaid');
     console.log(hw);
     } catch (err) {console.log({err})};
   } 

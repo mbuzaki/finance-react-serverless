@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/pyplaid",
+            "lambdaFunction": "pyLambda",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "pyapi",
+    "apiName": "pyapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "pyLambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-reactserverless-dev-141533-authRole",
+        "unAuthRoleName": "amplify-reactserverless-dev-141533-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "pyLambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
