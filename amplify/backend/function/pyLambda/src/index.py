@@ -20,10 +20,10 @@ def handler(event, context):
     'client_name': "My App",
     'country_codes': ['US'],
     'language': 'en'
-    # "headers": {
-    #   "Content-Type": 'applications/json',
-    #   'Access-Control-Allow-Origin': "*"
-    # }
+    "headers": {
+      "Content-Type": 'applications/json',
+      'Access-Control-Allow-Origin': "*"
+    }
 
   })
   

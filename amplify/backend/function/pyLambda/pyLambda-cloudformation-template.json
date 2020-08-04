@@ -69,7 +69,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-reactserverless-dev-141533-deployment",
-					"S3Key": "amplify-builds/pyLambda-45345434586c346f5949-build.zip"
+					"S3Key": "amplify-builds/pyLambda-6b487a5343372f727634-build.zip"
 				}
 			}
 		},
