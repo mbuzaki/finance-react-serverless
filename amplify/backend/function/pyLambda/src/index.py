@@ -12,7 +12,7 @@ def handler(event, context):
 
   client_user_id = 'huncho'
 
-  response = client.LinkToken.create({
+  link = client.LinkToken.create({
     'user': {
       'client_user_id': client_user_id,
     },
@@ -30,7 +30,7 @@ def handler(event, context):
 
   response = {
     'statusCode': 200,
-    'body': json.dumps(response),
+    'body': json.dumps(link),
     "headers": {
       "Content-Type": 'applications/json',
       'Access-Control-Allow-Origin': "*"
