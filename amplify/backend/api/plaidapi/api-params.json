@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/plaid",
+            "lambdaFunction": "plaid",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "plaidapi",
+    "apiName": "plaidapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "plaid"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-reactserverless-dev-141533-authRole",
+        "unAuthRoleName": "amplify-reactserverless-dev-141533-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "plaid",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

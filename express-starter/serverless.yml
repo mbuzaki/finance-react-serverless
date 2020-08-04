@@ -1,6 +1,0 @@
-app: express-starter
-component: express
-name: express-starter
-
-inputs:
-  src: ./

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import { API } from "aws-amplify";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -39,6 +39,18 @@ const useStyles = makeStyles(styles);
 
 export default function UserProfile() {
   const classes = useStyles();
+
+  async function callApi() {
+    try {
+      const hw = await API.post('pyapi', '/pyplaid');
+    console.log(hw);
+    } catch (err) {console.log({err})};
+  } 
+
+  useEffect(() => {
+    callApi()
+  }, []);
+
   return (
     <div>
       <GridContainer>
