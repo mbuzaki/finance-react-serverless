@@ -15,6 +15,7 @@ import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 
 import avatar from "assets/img/faces/marc.jpg";
+import { PlaidLink } from "react-plaid-link";
 
 const styles = {
   cardCategoryWhite: {
@@ -40,16 +41,19 @@ const useStyles = makeStyles(styles);
 export default function UserProfile() {
   const classes = useStyles();
 
+  const [linkToken, setLinkToken] = useState('')
+  const [linked, setLinked] = useState(false);
+
   async function callApi() {
     try {
-      const hw = await API.get('pyapi', '/pyplaid');
-    console.log(hw);
+      const hw = await API.post('plaidapi', '/plaidLinkToken');
+      console.log(hw.link_token);
+      const token = hw.link_token;
+      console.log(token);
+      setLinkToken(token); // why is not not updating right away?
+      setLinked(true);
     } catch (err) {console.log({err})};
   } 
-
-  useEffect(() => {
-    callApi()
-  }, []);
 
   return (
     <div>
@@ -161,7 +165,8 @@ export default function UserProfile() {
             </CardBody>
             <CardFooter>
               <Button color="primary">Update Profile</Button>
-              <Button color="primary">Connect to Plaid</Button>
+              <Button color="primary" onClick={callApi}>Get Transactions</Button>
+              <PlaidLink token={linkToken}/>
             </CardFooter>
           </Card>
         </GridItem>

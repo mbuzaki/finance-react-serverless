@@ -42,37 +42,6 @@ app.post('/plaidLinkToken', async function(request, res, next) {
   });
 });
 
-//Exchanging public token from link for access token
-app.post('/plaidAccessToken', function(request, response, next) {
-  const public_token = request.body.public_token;
-  client.exchangePublicToken(public_token, function(error, response) {
-    if (error != null) {
-      console.log('Could not exchange public_token!' + '\n' + error);
-      return response.json({error: msg});
-    }
-
-    // Store the access_token and item_id in your database
-    ACCESS_TOKEN = response.access_token;
-    ITEM_ID = response.item_id;
-
-    console.log('Access Token: ' + ACCESS_TOKEN);
-    console.log('Item ID: ' + ITEM_ID);
-    response.json({'error': false});
-  });
-});
-
-app.get('/plaidTransactions', function(request, response) {
-  const accessToken = request.body.access_token;
-  client.getTransactions(accessToken, '2020-07-01', '2018-08-01', {
-    count: 250,
-    offset: 0,
-  }, (err, result) => {
-    // Handle err
-    response.json({transactions: result.transactions});
-  });
-});
-
-
 app.listen(3000, function() {
     console.log("App started")
 });
