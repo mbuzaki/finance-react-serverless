@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/plaidLinkToken",
+            "lambdaFunction": "plaidfunction",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "plaidapi",
+    "apiName": "plaidapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "plaidfunction"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-financeserverless-dev-132253-authRole",
+        "unAuthRoleName": "amplify-financeserverless-dev-132253-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "plaidfunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
