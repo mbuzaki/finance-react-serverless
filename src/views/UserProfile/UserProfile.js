@@ -13,9 +13,9 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
+import PlaidLink from "components/PlaidLink/PlaidLink";
 
 import avatar from "assets/img/faces/marc.jpg";
-import { PlaidLink } from "react-plaid-link";
 
 const styles = {
   cardCategoryWhite: {
@@ -52,6 +52,7 @@ export default function UserProfile() {
       console.log(token);
       setLinkToken(token); // why is not not updating right away?
       setLinked(true);
+      console.log(hw);
     } catch (err) {console.log({err})};
   } 
 
@@ -166,7 +167,7 @@ export default function UserProfile() {
             <CardFooter>
               <Button color="primary">Update Profile</Button>
               <Button color="primary" onClick={callApi}>Get Transactions</Button>
-              <PlaidLink token={linkToken}/>
+              <PlaidLink token={linkToken} />
             </CardFooter>
           </Card>
         </GridItem>

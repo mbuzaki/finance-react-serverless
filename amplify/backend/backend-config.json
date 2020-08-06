@@ -11,6 +11,12 @@
 			"providerPlugin": "awscloudformation",
 			"service": "Lambda",
 			"dependsOn": []
+		},
+		"plaidaccesstoken": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": []
 		}
 	},
 	"api": {
@@ -21,6 +27,20 @@
 				{
 					"category": "function",
 					"resourceName": "plaidfunction",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"plaidaccessapi": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "plaidaccesstoken",
 					"attributes": [
 						"Name",
 						"Arn"

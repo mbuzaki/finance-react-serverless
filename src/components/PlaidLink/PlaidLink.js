@@ -3,18 +3,13 @@ import { usePlaidLink } from 'react-plaid-link';
 import { API } from "aws-amplify";
 
 const PlaidLink = (props) => {
-
-  // async function getPublicToken(token) {
-  //     try {
-  //         await API.post('plaidapi', '/plaidAccessToken', {
-  //           public_token: token
-  //         });
-  //     } catch (err) {console.log({err})};
-  // }
-
   
   const onSuccess = useCallback((token, metadata) => {
-    console.log('great success')
+    const resp = API.post('plaidaccessapi', '/accessToken', {
+      public_token: token,
+    });
+    console.log(resp)
+    linked = true;
   }, []);
 
   const linked = false;
@@ -30,12 +25,12 @@ const PlaidLink = (props) => {
   return (
     <div>
         <div>
-            <button onClick={() => open()} disabled={!ready}>
+            <button onClick={open()} disabled={!ready}>
             Connect a bank account
             </button>
         </div>
         <div>
-            <button onClick={getTransactions} disabled={linked}>
+            <button onClick={console.log('wtf2')} disabled={linked}>
             Get Transactions
             </button>
         </div>

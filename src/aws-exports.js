@@ -8,6 +8,11 @@ const awsmobile = {
             "name": "plaidapi",
             "endpoint": "https://mdf9us7vic.execute-api.us-west-2.amazonaws.com/dev",
             "region": "us-west-2"
+        },
+        {
+            "name": "plaidaccessapi",
+            "endpoint": "https://jh9gs0xdj8.execute-api.us-west-2.amazonaws.com/dev",
+            "region": "us-west-2"
         }
     ]
 };

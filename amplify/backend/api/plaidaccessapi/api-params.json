@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/accessToken",
+            "lambdaFunction": "plaidaccesstoken",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "plaidaccessapi",
+    "apiName": "plaidaccessapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "plaidaccesstoken"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-financeserverless-dev-132253-authRole",
+        "unAuthRoleName": "amplify-financeserverless-dev-132253-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "plaidaccesstoken",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
