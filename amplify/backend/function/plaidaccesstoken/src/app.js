@@ -23,6 +23,8 @@ app.use(awsServerlessExpressMiddleware.eventContext())
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
+  req.header("Access-Control-Allow-Origin", "*")
+  req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
   res.header("Access-Control-Allow-Origin", "*")
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
   next()
@@ -35,22 +37,23 @@ const client = new plaid.Client({
 });
 
 // Accept the public_token sent from Link
-app.post('/accessToken', function(request, res, next) {
+app.post('/accessToken', async function(request, res, next) {
   const public_token = request.body.public_token;
-  client.exchangePublicToken(public_token, function(error, exchangeResponse) {
-    if (error != null) {
-      console.log('Could not exchange public_token!' + '\n' + error);
-      return exchangeResponse.json({error: msg});
-    }
+  //const public_token = 'token'
+  // client.exchangePublicToken(public_token, async function(error, exchangeResponse) {
+  //   if (error != null) {
+  //     console.log('Could not exchange public_token!' + '\n' + error);
+  //     return exchangeResponse.json({error: msg});
+  //   }
 
-    // Store the access_token and item_id in your database
-    ACCESS_TOKEN = response.access_token;
-    ITEM_ID = response.item_id;
+  //   // Store the access_token and item_id in your database
+  //   ACCESS_TOKEN = exchangeResponse.access_token;
+  //   ITEM_ID = exchangeResponse.item_id;
 
-    console.log('Access Token: ' + ACCESS_TOKEN);
-    console.log('Item ID: ' + ITEM_ID);
-    res.json({'body': 'api/lambda is firing'});
-  });
+  //   console.log('Access Token: ' + ACCESS_TOKEN);
+  //   console.log('Item ID: ' + ITEM_ID);
+  // });
+  res.json({body: public_token});
 });
 
 app.listen(3000, function() {

@@ -13,6 +13,18 @@ const awsmobile = {
             "name": "plaidaccessapi",
             "endpoint": "https://jh9gs0xdj8.execute-api.us-west-2.amazonaws.com/dev",
             "region": "us-west-2"
+        },
+        {
+            "name": "addAccessToken",
+            "endpoint": "https://cwchzykbvl.execute-api.us-west-2.amazonaws.com/dev",
+            "region": "us-west-2"
+        }
+    ],
+    "aws_dynamodb_all_tables_region": "us-west-2",
+    "aws_dynamodb_table_schemas": [
+        {
+            "tableName": "UserDB-dev",
+            "region": "us-west-2"
         }
     ]
 };

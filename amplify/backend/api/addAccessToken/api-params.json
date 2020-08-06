@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/storeAccess",
+            "lambdaFunction": "storeAccessToken",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "addAccessToken",
+    "apiName": "addAccessToken",
+    "functionArns": [
+        {
+            "lambdaFunction": "storeAccessToken"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-financeserverless-dev-132253-authRole",
+        "unAuthRoleName": "amplify-financeserverless-dev-132253-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "storeAccessToken",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

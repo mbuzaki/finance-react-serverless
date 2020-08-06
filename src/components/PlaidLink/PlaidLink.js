@@ -4,15 +4,16 @@ import { API } from "aws-amplify";
 
 const PlaidLink = (props) => {
   
-  const onSuccess = useCallback((token, metadata) => {
-    const resp = API.post('plaidaccessapi', '/accessToken', {
-      public_token: token,
-    });
-    console.log(resp)
-    linked = true;
-  }, []);
+  const onSuccess = async function(token, metadata) {
+    const data = {
+      body: {
+      public_token: token
+    }
+  }
+    const resp = await API.post('plaidaccessapi', '/accessToken', data);
+    console.log(resp.body);
+  }
 
-  const linked = false;
 
   const config = {
     token: props.token,
@@ -30,7 +31,7 @@ const PlaidLink = (props) => {
             </button>
         </div>
         <div>
-            <button onClick={console.log('wtf2')} disabled={linked}>
+            <button onClick={console.log('wtf2')}>
             Get Transactions
             </button>
         </div>

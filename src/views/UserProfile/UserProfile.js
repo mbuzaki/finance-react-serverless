@@ -51,7 +51,6 @@ export default function UserProfile() {
       const token = hw.link_token;
       console.log(token);
       setLinkToken(token); // why is not not updating right away?
-      setLinked(true);
       console.log(hw);
     } catch (err) {console.log({err})};
   } 
