@@ -72,7 +72,6 @@ app.post('/accessToken', function(request, res, next) {
       }
     });
   });
-  res.json({message: 'great success'});
 });
 
 app.listen(3000, function() {
