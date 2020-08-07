@@ -18,6 +18,11 @@ const awsmobile = {
             "name": "addAccessToken",
             "endpoint": "https://cwchzykbvl.execute-api.us-west-2.amazonaws.com/dev",
             "region": "us-west-2"
+        },
+        {
+            "name": "gettransactionsapi",
+            "endpoint": "https://lwiw77pewl.execute-api.us-west-2.amazonaws.com/dev",
+            "region": "us-west-2"
         }
     ],
     "aws_dynamodb_all_tables_region": "us-west-2",

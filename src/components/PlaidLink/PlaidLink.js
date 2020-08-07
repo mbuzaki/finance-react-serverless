@@ -14,13 +14,10 @@ const PlaidLink = (props) => {
     console.log(resp);
   }
 
-  const testDB = async function() {
-    const entry = {
-      body: {
-        id: 'huncho'
-      }
-    }
-    const resp = await API.post('addAccessToken', '/storeAccess', entry);
+  const getTransactions = function() {
+    const resp = API.get('gettransactionsapi', '/transactions').then(res => {
+      console.log(res);
+    })
     console.log(resp);
   }
 
@@ -40,7 +37,7 @@ const PlaidLink = (props) => {
             </button>
         </div>
         <div>
-            <button onClick={testDB}>
+            <button onClick={getTransactions}>
             Get Transactions
             </button>
         </div>
