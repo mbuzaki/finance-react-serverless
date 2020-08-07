@@ -15,10 +15,9 @@ const PlaidLink = (props) => {
   }
 
   const getTransactions = function() {
-    const resp = API.get('gettransactionsapi', '/transactions').then(res => {
-      console.log(res);
-    })
-    console.log(resp);
+    API.get('getransactionsapi', '/transactions').then(res => {
+      console.log(res.msg.transactions);
+    });
   }
 
   const config = {

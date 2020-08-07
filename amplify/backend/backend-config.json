@@ -45,6 +45,21 @@
 					}
 				}
 			]
+		},
+		"gettransactionsfunction": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "UserDB",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	},
 	"api": {
@@ -83,6 +98,20 @@
 				{
 					"category": "function",
 					"resourceName": "storeAccessToken",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"getransactionsapi": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "gettransactionsfunction",
 					"attributes": [
 						"Name",
 						"Arn"

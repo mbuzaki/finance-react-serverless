@@ -20,8 +20,8 @@ const awsmobile = {
             "region": "us-west-2"
         },
         {
-            "name": "gettransactionsapi",
-            "endpoint": "https://lwiw77pewl.execute-api.us-west-2.amazonaws.com/dev",
+            "name": "getransactionsapi",
+            "endpoint": "https://5mu94x2gqd.execute-api.us-west-2.amazonaws.com/dev",
             "region": "us-west-2"
         }
     ],

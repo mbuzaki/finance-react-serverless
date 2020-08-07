@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/transactions",
+            "lambdaFunction": "gettransactionsfunction",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "getransactionsapi",
+    "apiName": "getransactionsapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "gettransactionsfunction"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-financeserverless-dev-132253-authRole",
+        "unAuthRoleName": "amplify-financeserverless-dev-132253-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "gettransactionsfunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
