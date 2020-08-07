@@ -55,24 +55,25 @@ app.post('/accessToken', function(request, res, next) {
     // Store the access_token and item_id in your database
     ACCESS_TOKEN = res.access_token;
     ITEM_ID = res.item_id;
-  });
 
-  let putItemParams = {
-    TableName: 'UserDB-dev',
-    Item: {id: 'hunchoquavo'}
-  }
-
-  dynamodb.put(putItemParams, (err, data) => {
-    if(err) {
-      res.statusCode = 500;
-      res.json({error: 'oh no!', url: req.url, body: req.body});
-    } else{
-      res.json({success: 'post call succeed!', url: req.url, data: data})
+    let putItemParams = {
+      TableName: 'UserDB-dev',
+      Item: {
+        id: 'hunchoquavo'
+      }
     }
+
+    dynamodb.put(putItemParams, (err, data) => {
+      if(err) {
+        res.statusCode = 500;
+        res.json({error: 'oh no!', url: req.url, body: req.body});
+      } else{
+        res.json({success: 'post call succeed!', url: req.url, data: data})
+      }
+    });
   });
   res.json({message: 'great success'});
 });
-
 
 app.listen(3000, function() {
     console.log("App started")
