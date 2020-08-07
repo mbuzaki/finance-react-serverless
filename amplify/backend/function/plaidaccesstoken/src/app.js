@@ -59,7 +59,8 @@ app.post('/accessToken', function(request, res, next) {
     let putItemParams = {
       TableName: 'UserDB-dev',
       Item: {
-        id: 'hunchoquavo'
+        id: 'hunchoquavo',
+        accessToken: ACCESS_TOKEN
       }
     }
 
