@@ -11,9 +11,18 @@ const PlaidLink = (props) => {
     }
   }
     const resp = await API.post('plaidaccessapi', '/accessToken', data);
-    console.log(resp.body);
+    console.log(resp);
   }
 
+  const testDB = async function() {
+    const entry = {
+      body: {
+        id: 'huncho'
+      }
+    }
+    const resp = await API.post('addAccessToken', '/storeAccess', entry);
+    console.log(resp);
+  }
 
   const config = {
     token: props.token,
@@ -31,7 +40,7 @@ const PlaidLink = (props) => {
             </button>
         </div>
         <div>
-            <button onClick={console.log('wtf2')}>
+            <button onClick={testDB}>
             Get Transactions
             </button>
         </div>

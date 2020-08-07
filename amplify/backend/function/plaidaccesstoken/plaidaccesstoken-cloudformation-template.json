@@ -9,6 +9,14 @@
 		},
 		"env": {
 			"Type": "String"
+		},
+		"storageUserDBName": {
+			"Type": "String",
+			"Default": "storageUserDBName"
+		},
+		"storageUserDBArn": {
+			"Type": "String",
+			"Default": "storageUserDBArn"
 		}
 	},
 	"Conditions": {
@@ -55,6 +63,12 @@
 						},
 						"REGION": {
 							"Ref": "AWS::Region"
+						},
+						"STORAGE_USERDB_NAME": {
+							"Ref": "storageUserDBName"
+						},
+						"STORAGE_USERDB_ARN": {
+							"Ref": "storageUserDBArn"
 						}
 					}
 				},
@@ -69,7 +83,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-financeserverless-dev-132253-deployment",
-					"S3Key": "amplify-builds/plaidaccesstoken-5469414f45666b473843-build.zip"
+					"S3Key": "amplify-builds/plaidaccesstoken-7345617355412b427659-build.zip"
 				}
 			}
 		},
@@ -150,6 +164,58 @@
 									}
 								]
 							}
+						}
+					]
+				}
+			}
+		},
+		"AmplifyResourcesPolicy": {
+			"DependsOn": [
+				"LambdaExecutionRole"
+			],
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "amplify-lambda-execution-policy",
+				"Roles": [
+					{
+						"Ref": "LambdaExecutionRole"
+					}
+				],
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:Put*",
+								"dynamodb:Create*",
+								"dynamodb:BatchWriteItem",
+								"dynamodb:Get*",
+								"dynamodb:BatchGetItem",
+								"dynamodb:List*",
+								"dynamodb:Describe*",
+								"dynamodb:Scan",
+								"dynamodb:Query",
+								"dynamodb:Update*",
+								"dynamodb:RestoreTable*",
+								"dynamodb:Delete*"
+							],
+							"Resource": [
+								{
+									"Ref": "storageUserDBArn"
+								},
+								{
+									"Fn::Join": [
+										"/",
+										[
+											{
+												"Ref": "storageUserDBArn"
+											},
+											"index/*"
+										]
+									]
+								}
+							]
 						}
 					]
 				}
