@@ -53,7 +53,13 @@ export default function UserProfile() {
       setLinkToken(token); // why is not not updating right away?
       console.log(hw);
     } catch (err) {console.log({err})};
-  } 
+  }
+  
+  function testPython() {
+    API.post('cleanandcategorizeapi', '/cleanandcategorize').then(res => {
+      console.log(res);
+    })
+  }
 
   return (
     <div>
@@ -164,7 +170,7 @@ export default function UserProfile() {
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button color="primary">Update Profile</Button>
+              <Button color="primary" onClick={testPython}>Update Profile</Button>
               <Button color="primary" onClick={callApi}>Get Transactions</Button>
               <PlaidLink token={linkToken} />
             </CardFooter>

@@ -60,6 +60,21 @@
 					]
 				}
 			]
+		},
+		"cleanandcategorize": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "UserDB",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	},
 	"api": {
@@ -112,6 +127,20 @@
 				{
 					"category": "function",
 					"resourceName": "gettransactionsfunction",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"cleanandcategorizeapi": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "cleanandcategorize",
 					"attributes": [
 						"Name",
 						"Arn"

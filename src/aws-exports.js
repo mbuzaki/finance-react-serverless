@@ -23,6 +23,11 @@ const awsmobile = {
             "name": "getransactionsapi",
             "endpoint": "https://5mu94x2gqd.execute-api.us-west-2.amazonaws.com/dev",
             "region": "us-west-2"
+        },
+        {
+            "name": "cleanandcategorizeapi",
+            "endpoint": "https://r5rz4ofl65.execute-api.us-west-2.amazonaws.com/dev",
+            "region": "us-west-2"
         }
     ],
     "aws_dynamodb_all_tables_region": "us-west-2",
