@@ -9,7 +9,7 @@ Next, use <code>npm install @aws-amplify/cli</code>
 After that, hit <code>amplify configure</code> and follow the prompts
 You will likely use your IAM console-- give yourself administrator access
 
-Once that is all done, hit <code>amplify init</code> and choose the same environment. Any changes will have to be done through pull requests. I will only accept pull requests that have changes on the front-end.
+Once that is all done, hit <code>amplify init</code> and choose the same environment. Make sure to use <code>amplify pull</code> and <code>amplify push</code> much like git. For right now, I'll only accept pull requests that have front-end changes which should keep things simple.
 
 I will look more into different environments on **Amplify**, there may be another way to *collaborate*.
   
