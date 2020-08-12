@@ -2,10 +2,8 @@
   "permissions": {
     "storage": {
       "UserDB": [
-        "create",
         "read",
-        "update",
-        "delete"
+        "update"
       ]
     }
   },
