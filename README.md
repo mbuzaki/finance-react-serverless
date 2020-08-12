@@ -13,7 +13,7 @@ Once that is all done, hit `amplify init` and choose the same environment. Any c
 
 I will look more into different environments on **Amplify**, there may be another way to *collaborate*.
   
-<h3>Alas<h/3>
+<h3>Alas</h3>
 `npm install` one more time for good measure and then `npm start`
 
 <h3>Happy hacking</h3>
