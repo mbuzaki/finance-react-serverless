@@ -13,7 +13,6 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-import PlaidLink from "components/PlaidLink/PlaidLink";
 
 import avatar from "assets/img/faces/marc.jpg";
 
@@ -42,7 +41,6 @@ export default function UserProfile() {
   const classes = useStyles();
 
   const [linkToken, setLinkToken] = useState('')
-  const [linked, setLinked] = useState(false);
 
   async function callApi() {
     try {
@@ -53,12 +51,6 @@ export default function UserProfile() {
       setLinkToken(token); // why is not not updating right away?
       console.log(hw);
     } catch (err) {console.log({err})};
-  }
-  
-  function testPython() {
-    API.post('cleanandcategorizeapi', '/cleanandcategorize').then(res => {
-      console.log(res);
-    })
   }
 
   return (
@@ -170,9 +162,7 @@ export default function UserProfile() {
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button color="primary" onClick={testPython}>Update Profile</Button>
-              <Button color="primary" onClick={callApi}>Get Transactions</Button>
-              <PlaidLink token={linkToken} />
+              <Button color="primary">Update Profile</Button>
             </CardFooter>
           </Card>
         </GridItem>

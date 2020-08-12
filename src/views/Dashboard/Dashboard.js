@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
 // @material-ui/core
@@ -28,6 +28,10 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardIcon from "components/Card/CardIcon.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
+import PlaidLink from "components/PlaidLink/PlaidLink";
+
+// AWS
+import { API } from 'aws-amplify';
 
 import { bugs, website, server } from "variables/general.js";
 
@@ -43,6 +47,28 @@ const useStyles = makeStyles(styles);
 
 export default function Dashboard() {
   const classes = useStyles();
+
+  // State hook to hold the link token
+  // Link token is passed to the Plaid Link
+  // component using props
+
+  // Hooks are cool
+  const [linkToken, setLinkToken] = useState('')
+
+  async function getLinkToken() {
+    // First step in Plaid Link sequence
+    // @trigger: Get Link Token button
+
+    /* Receives Plaid Link Token from the Client
+    and allows the Link component to initialize. It 
+    will not render until it has the fresh token*/
+    try {
+      const hw = await API.post('plaidapi', '/plaidLinkToken');
+      const token = hw.link_token;
+      setLinkToken(token); 
+    } catch (err) {console.log({err})};
+  }
+
   return (
     <div>
       <GridContainer>
@@ -105,7 +131,7 @@ export default function Dashboard() {
         </GridItem>
         <GridItem xs={12} sm={6} md={3}>
           <Card>
-            <CardHeader color="info" stats icon>
+            {/* <CardHeader color="info" stats icon>
               <CardIcon color="info">
                 <Accessibility />
               </CardIcon>
@@ -117,7 +143,9 @@ export default function Dashboard() {
                 <Update />
                 Just Updated
               </div>
-            </CardFooter>
+            </CardFooter> */}
+            <button onClick={getLinkToken}>Hurrr</button>
+            <PlaidLink token={linkToken} />
           </Card>
         </GridItem>
       </GridContainer>
@@ -134,7 +162,7 @@ export default function Dashboard() {
               />
             </CardHeader>
             <CardBody>
-              <h4 className={classes.cardTitle}>Daily Sales</h4>
+              <h4 className={classes.cardTitle}>hello bert</h4>
               <p className={classes.cardCategory}>
                 <span className={classes.successText}>
                   <ArrowUpward className={classes.upArrowCardCategory} /> 55%

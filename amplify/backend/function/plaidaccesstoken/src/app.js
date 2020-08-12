@@ -60,7 +60,8 @@ app.post('/accessToken', function(request, res, next) {
       TableName: 'UserDB-dev',
       Item: {
         id: 'hunchoquavo',
-        accessToken: ACCESS_TOKEN
+        accessToken: ACCESS_TOKEN,
+        categoryKeyWords: {}
       }
     }
 
