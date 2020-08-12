@@ -3,7 +3,7 @@
 Clone the repository
 
 <h3>Install Amplify</h3>
-Next, use `npm install aws-amplify/cli` 
+Next, use `npm install aws-amplifycli` 
 
 <h3>Configure Amplify</h3>
 After that, hit `amplify configure` and follow the prompts
