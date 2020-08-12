@@ -1,6 +1,6 @@
 # finance-react-serverless
 <h3> First Things First </h3>
-<p>First, clone the repository: `git clone https://github.com/robscott1/finance-react-serverless.git`</p>
+Clone the repository
 
 <h3>Install Amplify</h3>
 Next, use `npm install @aws-amplify/cli`
