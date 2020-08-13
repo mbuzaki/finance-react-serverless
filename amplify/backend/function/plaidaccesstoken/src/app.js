@@ -61,7 +61,11 @@ app.post('/accessToken', function(request, res, next) {
       Item: {
         id: 'hunchoquavo',
         accessToken: ACCESS_TOKEN,
-        categoryKeyWords: {}
+        categories: ['restaurants', 'travel', 'fun'],
+        categoryKeywords: [['in-n-out', 'chipotle', 'wingstop'],
+                           [ 'chevron', '76'],
+                           ['campus bottle', 'morro bay golf club', 'slosa']
+                          ]
       }
     }
 

@@ -69,6 +69,23 @@ export default function Dashboard() {
     } catch (err) {console.log({err})};
   }
 
+  function addCategory() {
+    const kw = [['chiptole', 'wingstop'],
+                ['76', 'shell', 'chevron'],
+                ['campus bottle'],
+                ['california fresh']
+               ]
+    var data = {
+      body:{
+        categories: ['restaurants', 'travel', 'fun', 'groceries'],
+        kw: kw
+      }
+    }
+
+    API.post('categoriesApi', '/addCategory', data).then(res => {
+      console.log(res);
+    })
+  }
   return (
     <div>
       <GridContainer>
@@ -144,6 +161,7 @@ export default function Dashboard() {
                 Just Updated
               </div>
             </CardFooter> */}
+            <button onClick={addCategory}>Test Add Category</button>
             <button onClick={getLinkToken}>Hurrr</button>
             <PlaidLink token={linkToken} />
           </Card>

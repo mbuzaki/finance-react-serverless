@@ -41,12 +41,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"cleanandcategorize",
+						"addCategory",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"cleanandcategorize",
+									"addCategory",
 									"-",
 									{
 										"Ref": "env"
@@ -83,7 +83,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-financeserverless-dev-132253-deployment",
-					"S3Key": "amplify-builds/cleanandcategorize-46677575525a76523452-build.zip"
+					"S3Key": "amplify-builds/addCategory-4c794461635534564359-build.zip"
 				}
 			}
 		},
@@ -93,12 +93,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"financeserverlessLambdaRole55812dc3",
+						"financeserverlessLambdaRoled10a1752",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"financeserverlessLambdaRole55812dc3",
+									"financeserverlessLambdaRoled10a1752",
 									"-",
 									{
 										"Ref": "env"
@@ -187,6 +187,9 @@
 						{
 							"Effect": "Allow",
 							"Action": [
+								"dynamodb:Put*",
+								"dynamodb:Create*",
+								"dynamodb:BatchWriteItem",
 								"dynamodb:Get*",
 								"dynamodb:BatchGetItem",
 								"dynamodb:List*",

@@ -28,6 +28,11 @@ const awsmobile = {
             "name": "cleanandcategorizeapi",
             "endpoint": "https://r5rz4ofl65.execute-api.us-west-2.amazonaws.com/dev",
             "region": "us-west-2"
+        },
+        {
+            "name": "categoriesApi",
+            "endpoint": "https://wv59du33mc.execute-api.us-west-2.amazonaws.com/dev",
+            "region": "us-west-2"
         }
     ],
     "aws_dynamodb_all_tables_region": "us-west-2",
