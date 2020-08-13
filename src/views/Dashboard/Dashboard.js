@@ -70,6 +70,19 @@ export default function Dashboard() {
   }
 
   function addCategory() {
+    // Adds new category to existing list in DynamoDb
+    // @trigger: Test Add Category button
+
+    /* All categories will be held in state because they will be
+    used to render data. When a new category is made, append it to
+    the array and trigger the API when the user exits the view. We will
+    use a React lifecycle method most likely. This will keep us from 
+    invoking the lambda like 8 consecutive times when they add several
+    categories in one visit. When a category is made, the function (as
+    of right now) also adds a blank array meant to be that respective
+    categories keywords. */
+
+    const categories = ['restaurants', 'travel', 'fun', 'groceries']
     const kw = [['chiptole', 'wingstop'],
                 ['76', 'shell', 'chevron'],
                 ['campus bottle'],
@@ -77,7 +90,7 @@ export default function Dashboard() {
                ]
     var data = {
       body:{
-        categories: ['restaurants', 'travel', 'fun', 'groceries'],
+        categories: categories,
         kw: kw
       }
     }
