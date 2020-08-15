@@ -25,11 +25,31 @@ const PlaidLink = (props) => {
   const getTransactions = function() {
     // Gets transactions from linked account
     // @trigger: Get Transactions button
-    /* Returns array of huge transaction objects
-    and we will use another function to clean up 
-    the data just for what we need*/
+    /* Returns array of huge transaction objects, then
+    passed to the next function. Second function extracts
+    the information we want, and categorizes based on the
+    latest categories and keywords. 
+
+    @returns: array of transaction json objects*/
+    
     API.get('getransactionsapi', '/transactions').then(res => {
       console.log(res.msg.transactions);
+      const trx = res.msg.transactions
+      const data = {
+        body: {
+          transactions: trx
+        }
+      }
+      API.post('cleanandcategorizeapi', '/cleanandcategorize', data).then(res => {
+        var transactions = []
+        var i;
+        var item;
+        for(i = 0; i < res.cleaned.length; i++){
+          item = JSON.parse(res.cleaned[i]);
+          transactions.push(item);
+        };
+        console.log(transactions);
+      })
     });
   }
 

@@ -83,7 +83,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-financeserverless-dev-132253-deployment",
-					"S3Key": "amplify-builds/cleanandcategorize-46677575525a76523452-build.zip"
+					"S3Key": "amplify-builds/cleanandcategorize-7738695933596479507a-build.zip"
 				}
 			}
 		},

@@ -63,7 +63,7 @@ app.post('/accessToken', function(request, res, next) {
         accessToken: ACCESS_TOKEN,
         categories: ['restaurants', 'travel', 'fun'],
         categoryKeywords: [['in-n-out', 'chipotle', 'wingstop'],
-                           [ 'chevron', '76'],
+                           [ 'chevron', '76', 'Sparkfun'],
                            ['campus bottle', 'morro bay golf club', 'slosa']
                           ]
       }

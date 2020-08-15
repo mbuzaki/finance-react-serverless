@@ -1,10 +1,11 @@
 import json
+import boto3
 
 class Transaction():
   # This object will pull out the items we want for 
   # analyses. For any future work, this can be modified
   # to hold the info we want
-
+ 
   def __init__(self, amt, date, name, merchant_name, category='unhandled'):
     self.amt = amt
     self.date = date
@@ -17,15 +18,42 @@ class Transaction():
 
 def handler(event, context):
 
-  cleaned = []
-  for key, value in event.items():
-    amt = value['amount']
-    date = value['date']
-    name = value['name']
-    merchant_name = value['merchant_name']
-    t = Transaction(amt, date, name, merchant_name)
-    cleaned.append(t.toJSON())
+  dynamodb = boto3.resource('dynamodb')
+  dynamodb = dynamodb.Table('UserDB-dev')
+  
+  item = dynamodb.get_item(Key={'id': 'hunchoquavo'})
+  item = item['Item']
+  
+  categories = item['categories']
+  keywords = item['categoryKeywords']
 
+  transactions = json.loads(event['body'])
+  transactions = transactions['transactions']
+
+  # iterates array of transactions and grabs pertinent information
+  cleaned = []
+  for obj in transactions:
+    amt = obj['amount']
+    date = obj['date']
+    name = obj['name']
+    merchant_name = obj['merchant_name']
+    category = 'unhandled'
+    '''
+    Iterates through keywords nested array. If the
+    merchant name exists in any of the keyword sub-arrays,
+    then use that index to grab the name of the category
+    in the categories list
+    '''
+    for i in range(len(categories)):
+      keywordsList = keywords[i]
+      if merchant_name in keywordsList:
+        category = categories[i]
+        break
+      
+
+    t = Transaction(amt, date, name, merchant_name, category)
+    cleaned.append(t.toJSON()) 
+  
   msg = {
     'statusCode': 200,
     'headers': {
