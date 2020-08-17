@@ -48,7 +48,6 @@ const PlaidLink = (props) => {
           item = JSON.parse(res.cleaned[i]);
           transactions.push(item);
         };
-        console.log(transactions);
       })
     });
   }
@@ -56,7 +55,6 @@ const PlaidLink = (props) => {
   const config = {
     token: props.token,
     onSuccess
-    // ...
   };
 
   const { open, ready, error } = usePlaidLink(config);
