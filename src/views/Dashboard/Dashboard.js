@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
 // @material-ui/core
@@ -33,6 +33,9 @@ import PlaidLink from "components/PlaidLink/PlaidLink";
 // AWS
 import { API } from 'aws-amplify';
 
+// Import Context
+import { store } from '../../store.js'
+
 import { bugs, website, server } from "variables/general.js";
 
 import {
@@ -54,6 +57,9 @@ export default function Dashboard() {
 
   // Hooks are cool
   const [linkToken, setLinkToken] = useState('')
+  // React Context
+  const globalStore = useContext(store);
+
 
   async function getLinkToken() {
     // First step in Plaid Link sequence
@@ -65,7 +71,8 @@ export default function Dashboard() {
     try {
       const hw = await API.post('plaidapi', '/plaidLinkToken');
       const token = hw.link_token;
-      setLinkToken(token); 
+      setLinkToken(token);
+      console.log(globalStore)
     } catch (err) {console.log({err})};
   }
 
@@ -99,6 +106,8 @@ export default function Dashboard() {
       console.log(res);
     })
   }
+
+
   return (
     <div>
       <GridContainer>
@@ -213,7 +222,7 @@ export default function Dashboard() {
             <CardHeader color="warning">
               <ChartistGraph
                 className="ct-chart"
-                data={emailsSubscriptionChart.data}
+                data={globalStore.state.data}
                 type="Bar"
                 options={emailsSubscriptionChart.options}
                 responsiveOptions={emailsSubscriptionChart.responsiveOptions}
