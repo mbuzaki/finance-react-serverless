@@ -104,10 +104,13 @@ export default function TableList() {
             <Table
               tableHeaderColor="primary"
               tableHead={["Name", "Date", "Category", "Amount"]}
-              tableData={userInfo.transactions.map((trx) => {
+              tableData={userInfo.transactions.filter(item =>
+                item.category === 'unhandled').map((trx) => {
+                  if(trx.category === 'unhandled'){
+                    return [trx.name, trx.date, trx.category, trx.amt]
+                  }
                 // wow I just destroyed that entire func
                 // up there with a one-liner
-                return [trx.name, trx.date, trx.category, trx.amt]
               })}
             />
           </CardBody>
