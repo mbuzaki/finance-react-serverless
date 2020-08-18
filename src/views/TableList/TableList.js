@@ -77,41 +77,54 @@ export default function TableList() {
         <CustomTabs
               title="Sorted Transactions"
               headerColor="primary"
-              tabs={[
-                {
-                  tabName: "Bugs",
-                  tabIcon: BugReport,
-                  tabContent: (
-                    <Tasks
-                      checkedIndexes={[0, 3]}
-                      tasksIndexes={[0, 1, 2, 3]}
-                      tasks={bugs}
-                    />
-                  )
-                },
-                {
-                  tabName: "Website",
+              tabs={userInfo.categories.map(value => {
+                var index = userInfo.categories.indexOf(value)
+                var categoryTrx = userInfo.sortedTransactions[index]
+                return(
+                  {tabName: value,
                   tabIcon: Code,
                   tabContent: (
                     <Tasks
-                      checkedIndexes={[0]}
-                      tasksIndexes={[0, 1]}
-                      tasks={website}
+                      tasks={categoryTrx}
                     />
-                  )
-                },
-                {
-                  tabName: "Server",
-                  tabIcon: Cloud,
-                  tabContent: (
-                    <Tasks
-                      checkedIndexes={[1]}
-                      tasksIndexes={[0, 1, 2]}
-                      tasks={server}
-                    />
-                  )
-                }
-              ]}
+                  )}
+                )
+              })}
+              // tabs={[
+              //   {
+              //     tabName: "Bugs",
+              //     tabIcon: BugReport,
+              //     tabContent: (
+              //       <Tasks
+              //         checkedIndexes={[0, 3]}
+              //         tasksIndexes={[0, 1, 2, 3]}
+              //         tasks={bugs}
+              //       />
+              //     )
+              //   },
+              //   {
+              //     tabName: "Website",
+              //     tabIcon: Code,
+              //     tabContent: (
+              //       <Tasks
+              //         checkedIndexes={[0]}
+              //         tasksIndexes={[0, 1]}
+              //         tasks={website}
+              //       />
+              //     )
+              //   },
+              //   {
+              //     tabName: "Server",
+              //     tabIcon: Cloud,
+              //     tabContent: (
+              //       <Tasks
+              //         checkedIndexes={[1]}
+              //         tasksIndexes={[0, 1, 2]}
+              //         tasks={server}
+              //       />
+              //     )
+              //   }
+              // ]}
             />
       </GridItem>
       <GridItem xs={12} sm={12} md={12}>
