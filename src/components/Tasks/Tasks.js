@@ -40,14 +40,14 @@ export default function Tasks(props) {
     <Table className={classes.table}>
       <TableBody>
         {tasks.map((value) => {
-          return(
-            <TableRow>
-              <TableCell>{value.name}</TableCell>
-              <TableCell>{value.date}</TableCell>
-              <TableCell>{value.category}</TableCell>
-              <TableCell>{value.amt}</TableCell>
-            </TableRow>
-          );
+            return (
+              <TableRow>
+                <TableCell>{value.name}</TableCell>
+                <TableCell>{value.date}</TableCell>
+                <TableCell>{value.category}</TableCell>
+                <TableCell>{value.amt}</TableCell>
+              </TableRow>
+            );
         })}
       </TableBody>
     </Table>
