@@ -58,7 +58,8 @@ export default function Dashboard() {
   // Hooks are cool
   const [linkToken, setLinkToken] = useState('')
   // React Context
-  const globalStore = useContext(store);
+  const userInfo = useContext(store);
+  const { dispatch } = userInfo;
 
 
   async function getLinkToken() {
@@ -222,7 +223,7 @@ export default function Dashboard() {
             <CardHeader color="warning">
               <ChartistGraph
                 className="ct-chart"
-                data={globalStore.state.data}
+                data={userInfo.data}
                 type="Bar"
                 options={emailsSubscriptionChart.options}
                 responsiveOptions={emailsSubscriptionChart.responsiveOptions}
