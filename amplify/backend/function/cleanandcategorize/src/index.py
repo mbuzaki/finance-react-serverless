@@ -54,9 +54,9 @@ def handler(event, context):
         cleaned.append(t.toJSON()) 
         break
       
-
-    # t = Transaction(amt, date, name, merchant_name, category)
-    # cleaned.append(t.toJSON()) 
+    if category == 'unhandled':
+      t = Transaction(amt, date, name, merchant_name, category)
+      cleaned.append(t.toJSON()) 
   
   msg = {
     'statusCode': 200,
