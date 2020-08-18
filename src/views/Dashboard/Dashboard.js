@@ -107,10 +107,18 @@ export default function Dashboard() {
         kw: kw
       }
     }
+    // All test data
 
     API.post('categoriesApi', '/addCategory', data).then(res => {
       console.log(res);
     })
+  }
+
+  function updateTransactions() {
+    var value = 'foob'
+
+    userInfo.updateTransactions(value);
+    console.log(userInfo);
   }
 
 
@@ -189,6 +197,7 @@ export default function Dashboard() {
                 Just Updated
               </div>
             </CardFooter> */}
+            <button onClick={updateTransactions}>Test Context Reducer</button>
             <button onClick={addCategory}>Test Add Category</button>
             <button onClick={getLinkToken}>Hurrr</button>
             <PlaidLink token={linkToken} />

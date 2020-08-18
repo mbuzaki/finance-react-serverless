@@ -25,6 +25,7 @@ const initialState = {
 
 const actions = {
   updateTransactions: "UPDATE_TRANSACTIONS",
+  receiveTransactions: "RECEIVE_TRANSACTIONS",
   updateCategories: "UPDATE_CATEGORIES",
   updateKeywords: "UPDATE_KEYWORDS",
   updateData: "UPDATE_DATA"
@@ -35,13 +36,12 @@ const { Provider } = store;
 
 const reducer = (state, action) => {
   switch(action.type) {
-    case 'UPDATE_TRANSACTIONS':
-      /* Adds one or more transactions to the provider props. 
-      The true operation concatenates the existing array and
-      the incoming array. Yes, this reducer expects an array!
-      The reasonig behind this is that there is likely to be more
-      than one transaction moving around in this case */
+    case actions.updateTransactions:
+      // Adds one or more transactions to the provider props
       return {...state, transactions: state.transactions.push(action.payload)};
+    case actions.receiveTransactions:
+      console.log('loading in all trx..')
+      return {...state, transactions: action.payload};
     default:
       return {...state};
   };
@@ -72,16 +72,19 @@ const StateProvider = ( { children } ) => {
       series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 500]]
     },
     updateTransactions: value => {dispatch(
-      {type: actions.updateTransactions, value})
+      {type: actions.updateTransactions, payload: value})
+    },
+    receiveTransactions: value => {dispatch(
+      {type: actions.receiveTransactions, payload: value})
     },
     updateCategories: value => {dispatch(
-      {type: actions.updateCategories, value})
+      {type: actions.updateCategories, payload: value})
     },
     updateKeywords: value => {dispatch(
-      {type: actions.updateKeywords, value})
+      {type: actions.updateKeywords, payload: value})
     },
     updateData: value => {dispatch(
-      {type: actions.updateData, value})
+      {type: actions.updateData, payload: value})
     }
   };
 
