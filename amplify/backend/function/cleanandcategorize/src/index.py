@@ -32,6 +32,7 @@ def handler(event, context):
 
   # iterates array of transactions and grabs pertinent information
   cleaned = []
+  categorized = [[] for i in categories]
   for obj in transactions:
     amt = obj['amount']
     date = obj['date']
@@ -48,11 +49,14 @@ def handler(event, context):
       keywordsList = keywords[i]
       if merchant_name in keywordsList:
         category = categories[i]
+        t = Transaction(amt, date, name, merchant_name, category)
+        categorized[i].append(t.toJSON())
+        cleaned.append(t.toJSON()) 
         break
       
 
-    t = Transaction(amt, date, name, merchant_name, category)
-    cleaned.append(t.toJSON()) 
+    # t = Transaction(amt, date, name, merchant_name, category)
+    # cleaned.append(t.toJSON()) 
   
   msg = {
     'statusCode': 200,
@@ -63,7 +67,8 @@ def handler(event, context):
     },
     'body': json.dumps({'cleaned' : cleaned,
                         'categories': categories,
-                        'keywords': keywords})
+                        'keywords': keywords,
+                        'sortedTransactions': categorized})
   }
 
   return msg
