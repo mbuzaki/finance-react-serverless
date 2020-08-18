@@ -4,6 +4,7 @@ const initialState = {
     transactions: [],
     categories: [],
     keywords: [],
+    sortedTransactions:[],
     data: {
         labels: [
           "Jan",
@@ -28,7 +29,8 @@ const actions = {
   receiveTransactions: "RECEIVE_TRANSACTIONS",
   updateCategories: "UPDATE_CATEGORIES",
   updateKeywords: "UPDATE_KEYWORDS",
-  updateData: "UPDATE_DATA"
+  updateData: "UPDATE_DATA",
+  receiveSortedArray: "UPDATE_SORTED"
 };
 
 const store = createContext(initialState);
@@ -45,8 +47,8 @@ const reducer = (state, action) => {
       return {...state, categories: action.payload};
     case actions.updateKeywords:
       return {...state, keywords: action.payload};
-
-
+    case actions.receiveSortedArray:
+      return {...state, sortedTransactions: action.payload}
     default:
       return {...state};
   };
@@ -59,6 +61,7 @@ const StateProvider = ( { children } ) => {
     transactions: state.transactions,
     categories: state.categories,
     keywords: state.keywords,
+    sortedTransactions: state.sortedTransactions,
     data: {
       labels: [
         "Jan",
@@ -90,6 +93,9 @@ const StateProvider = ( { children } ) => {
     },
     updateData: value => {dispatch(
       {type: actions.updateData, payload: value})
+    },
+    receiveSortedArray: value => {dispatch(
+      {type: actions.receiveSortedArray, payload: value})
     }
   };
 
