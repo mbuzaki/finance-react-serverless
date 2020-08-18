@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext} from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -16,6 +16,7 @@ import Code from "@material-ui/icons/Code";
 import Cloud from "@material-ui/icons/Cloud";
 import Tasks from "components/Tasks/Tasks.js";
 
+import { store } from '../../store.js'
 
 const styles = {
   cardCategoryWhite: {
@@ -49,8 +50,27 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
+// const [unhandled, setUnhandled] = useState([])
+
+// const collectTransactions = () => {
+//   const trx = userInfo.transactions;
+//   var rendering = []
+//   var i;
+//   for(i=0; i < trx.length; i++){
+//     if(trx[i].category === 'unhandled'){
+//       t = [];
+//       var name = trx[i].name;
+//       var data = trx[i].date;
+//       var category = 'unhandled';
+//       var amt = trx[i].amt;
+//       rendering.push(t);
+//     }
+//   }
+// }
+
 export default function TableList() {
   const classes = useStyles();
+  const userInfo = useContext(store)
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
@@ -105,15 +125,10 @@ export default function TableList() {
           <CardBody>
             <Table
               tableHeaderColor="primary"
-              tableHead={["Name", "Country", "City", "Salary"]}
-              tableData={[
-                ["Dakota Rice", "Niger", "Oud-Turnhout", "$36,738"],
-                ["Minerva Hooper", "Curaçao", "Sinaai-Waas", "$23,789"],
-                ["Sage Rodriguez", "Netherlands", "Baileux", "$56,142"],
-                ["Philip Chaney", "Korea, South", "Overland Park", "$38,735"],
-                ["Doris Greene", "Malawi", "Feldkirchen in Kärnten", "$63,542"],
-                ["Mason Porter", "Chile", "Gloucester", "$78,615"]
-              ]}
+              tableHead={["Name", "Date", "Category", "Amount"]}
+              tableData={userInfo.transactions.map((trx) => {
+                return [trx.name, trx.date, trx.category, trx.amt]
+              })}
             />
           </CardBody>
         </Card>
