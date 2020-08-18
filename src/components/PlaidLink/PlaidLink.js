@@ -1,8 +1,12 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { usePlaidLink } from 'react-plaid-link';
 import { API } from "aws-amplify";
+// Import Context
+import { store } from '../../store.js'
 
 const PlaidLink = (props) => {
+  var linkToken = props.token
+  const userInfo = useContext(store)
   
   const onSuccess = function(token, metadata) {
     // This function is automatically called when the user
@@ -19,9 +23,9 @@ const PlaidLink = (props) => {
     // This API invokes a function just to store the user's access token
     // no response from here. The access token gets use all the information
     // in the linked bank account
-    API.post('plaidaccessapi', '/accessToken', data).then(
-      console.log('perhaps a success..?')
-    );
+    API.post('plaidaccessapi', '/accessToken', data).then(res => {
+      console.log(res.success)
+    });
   }
 
   const getTransactions = function() {
@@ -50,12 +54,13 @@ const PlaidLink = (props) => {
           item = JSON.parse(res.cleaned[i]);
           transactions.push(item);
         };
+        userInfo.receiveTransactions(transactions);
       })
     });
   }
 
   const config = {
-    token: props.token,
+    token: linkToken,
     onSuccess
   };
 
@@ -64,7 +69,9 @@ const PlaidLink = (props) => {
   return (
     <div>
         <div>
-            <button onClick={open()} disabled={!ready}>
+            <button onClick={() => {
+               open();
+               linkToken = 'null'}} disabled={!ready}>
             Connect a bank account
             </button>
         </div>
