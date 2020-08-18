@@ -78,6 +78,7 @@ app.post('/accessToken', function(request, res, next) {
       }
     });
   });
+  res.json({success: 'token exchanged and securely stored'})
 });
 
 app.listen(3000, function() {
