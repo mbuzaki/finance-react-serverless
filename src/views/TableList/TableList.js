@@ -127,6 +127,8 @@ export default function TableList() {
               tableHeaderColor="primary"
               tableHead={["Name", "Date", "Category", "Amount"]}
               tableData={userInfo.transactions.map((trx) => {
+                // wow I just destroyed that entire func
+                // up there with a one-liner
                 return [trx.name, trx.date, trx.category, trx.amt]
               })}
             />
