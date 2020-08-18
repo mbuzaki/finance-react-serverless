@@ -68,12 +68,17 @@ export default function Dashboard() {
 
     /* Receives Plaid Link Token from the Client
     and allows the Link component to initialize. It 
-    will not render until it has the fresh token*/
+    will not render until it has the fresh token.
+    
+    In a perfect world, this will be triggered when
+    the user signs in. However, a button will need to
+    be clicked in order to get the token, then hit the
+    "Connect a bank account" button to initialize link.*/
     try {
       const hw = await API.post('plaidapi', '/plaidLinkToken');
       const token = hw.link_token;
       setLinkToken(token);
-      console.log(globalStore)
+      console.log(userInfo)
     } catch (err) {console.log({err})};
   }
 
