@@ -65,11 +65,12 @@ const PlaidLink = (props) => {
           }
           sortedTransactions.push(cat);
         };
-        console.log(sortedTransactions)
+        console.log(res.cleaned)
+        console.log(transactions)
+        userInfo.receiveSortedArray(sortedTransactions);
         userInfo.updateCategories(res.categories);
         userInfo.updateKeywords(res.keywords)
         userInfo.receiveTransactions(transactions);
-        console.log(userInfo)
       })
     });
   }
