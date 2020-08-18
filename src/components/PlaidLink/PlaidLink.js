@@ -4,7 +4,7 @@ import { API } from "aws-amplify";
 
 const PlaidLink = (props) => {
   
-  const onSuccess = async function(token, metadata) {
+  const onSuccess = function(token, metadata) {
     // This function is automatically called when the user
     // properly authenticates his or her self. The "token"
     // parameter is handed over straight from the Link, so
@@ -19,7 +19,9 @@ const PlaidLink = (props) => {
     // This API invokes a function just to store the user's access token
     // no response from here. The access token gets use all the information
     // in the linked bank account
-    const resp = await API.post('plaidaccessapi', '/accessToken', data);
+    API.post('plaidaccessapi', '/accessToken', data).then(
+      console.log('perhaps a success..?')
+    );
   }
 
   const getTransactions = function() {
