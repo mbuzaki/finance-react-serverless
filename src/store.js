@@ -40,8 +40,13 @@ const reducer = (state, action) => {
       // Adds one or more transactions to the provider props
       return {...state, transactions: state.transactions.push(action.payload)};
     case actions.receiveTransactions:
-      console.log('loading in all trx..')
       return {...state, transactions: action.payload};
+    case actions.updateCategories:
+      return {...state, categories: action.payload};
+    case actions.updateKeywords:
+      return {...state, keywords: action.payload};
+
+
     default:
       return {...state};
   };
