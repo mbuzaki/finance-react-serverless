@@ -62,9 +62,9 @@ app.post('/accessToken', function(request, res, next) {
         id: 'hunchoquavo',
         accessToken: ACCESS_TOKEN,
         categories: ['restaurants', 'travel', 'fun'],
-        categoryKeywords: [['in-n-out', 'chipotle', 'wingstop'],
-                           [ 'chevron', '76', 'Sparkfun'],
-                           ['campus bottle', 'morro bay golf club', 'slosa']
+        categoryKeywords: [['Starbucks', 'McDonald\s', 'wingstop'],
+                           [ 'Uber', 'Sparkfun'],
+                           ['American Airlines', 'Tetra Inc']
                           ]
       }
     }
@@ -78,7 +78,6 @@ app.post('/accessToken', function(request, res, next) {
       }
     });
   });
-  res.json({success: 'token exchanged and securely stored'})
 });
 
 app.listen(3000, function() {

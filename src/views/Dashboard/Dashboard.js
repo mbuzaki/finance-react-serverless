@@ -59,8 +59,6 @@ export default function Dashboard() {
   const [linkToken, setLinkToken] = useState('')
   // React Context
   const userInfo = useContext(store);
-  const { dispatch } = userInfo;
-
 
   async function getLinkToken() {
     // First step in Plaid Link sequence
@@ -82,37 +80,37 @@ export default function Dashboard() {
     } catch (err) {console.log({err})};
   }
 
-  function addCategory() {
-    // Adds new category to existing list in DynamoDb
-    // @trigger: Test Add Category button
+  // function addCategory() {
+  //   // Adds new category to existing list in DynamoDb
+  //   // @trigger: Test Add Category button
 
-    /* All categories will be held in state because they will be
-    used to render data. When a new category is made, append it to
-    the array and trigger the API when the user exits the view. We will
-    use a React lifecycle method most likely. This will keep us from 
-    invoking the lambda like 8 consecutive times when they add several
-    categories in one visit. When a category is made, the function (as
-    of right now) also adds a blank array meant to be that respective
-    categories keywords. */
+  //   /* All categories will be held in state because they will be
+  //   used to render data. When a new category is made, append it to
+  //   the array and trigger the API when the user exits the view. We will
+  //   use a React lifecycle method most likely. This will keep us from 
+  //   invoking the lambda like 8 consecutive times when they add several
+  //   categories in one visit. When a category is made, the function (as
+  //   of right now) also adds a blank array meant to be that respective
+  //   categories keywords. */
 
-    const categories = ['restaurants', 'travel', 'fun', 'groceries']
-    const kw = [['chiptole', 'wingstop'],
-                ['76', 'shell', 'chevron'],
-                ['campus bottle'],
-                ['california fresh']
-               ]
-    var data = {
-      body:{
-        categories: categories,
-        kw: kw
-      }
-    }
-    // All test data
+  //   const categories = ['restaurants', 'travel', 'fun', 'groceries']
+  //   const kw = [['chiptole', 'wingstop'],
+  //               ['76', 'shell', 'chevron'],
+  //               ['campus bottle'],
+  //               ['california fresh']
+  //              ]
+  //   var data = {
+  //     body:{
+  //       categories: categories,
+  //       kw: kw
+  //     }
+  //   }
+  //   // All test data
 
-    API.post('categoriesApi', '/addCategory', data).then(res => {
-      console.log(res);
-    })
-  }
+  //   API.post('categoriesApi', '/addCategory', data).then(res => {
+  //     console.log(res);
+  //   })
+  // }
 
   function updateTransactions() {
     var value = 'foob'
@@ -198,7 +196,7 @@ export default function Dashboard() {
               </div>
             </CardFooter> */}
             <button onClick={updateTransactions}>Test Context Reducer</button>
-            <button onClick={addCategory}>Test Add Category</button>
+            <button onClick={console.log('uncomment')}>Test Add Category</button>
             <button onClick={getLinkToken}>Get Link Token</button>
             <PlaidLink token={linkToken} />
           </Card>

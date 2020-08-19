@@ -40,8 +40,8 @@ const jsonParseResults = (cleaned,
         }
         sortedTransactionsResult.push(cat);
     };
-    userInfo.receiveSortedArray(sortedTransactionsResult);
-    userInfo.receiveTransactions(transactions);
+    receiveSortedArray(sortedTransactionsResult);
+    receiveTransactions(transactions);
 }
 
 export { jsonParseResults };

@@ -41,6 +41,7 @@ const PlaidLink = (props) => {
     
     API.get('getransactionsapi', '/transactions').then(res => {
       const trx = res.msg.transactions
+      console.log(trx)
       const data = {
         body: {
           transactions: trx
@@ -51,6 +52,8 @@ const PlaidLink = (props) => {
                 userInfo.receiveSortedArray, userInfo.receiveTransactions);
         userInfo.updateCategories(res.categories);
         userInfo.updateKeywords(res.keywords)
+        console.log(res.cleaned);
+        console.log(res.categories)
       })
     });
   }
