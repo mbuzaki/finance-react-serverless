@@ -199,7 +199,7 @@ export default function Dashboard() {
             </CardFooter> */}
             <button onClick={updateTransactions}>Test Context Reducer</button>
             <button onClick={addCategory}>Test Add Category</button>
-            <button onClick={getLinkToken}>Hurrr</button>
+            <button onClick={getLinkToken}>Get Link Token</button>
             <PlaidLink token={linkToken} />
           </Card>
         </GridItem>

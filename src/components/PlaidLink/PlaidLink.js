@@ -3,6 +3,7 @@ import { usePlaidLink } from 'react-plaid-link';
 import { API } from "aws-amplify";
 // Import Context
 import { store } from '../../store.js'
+import { jsonParseResults } from './PlaidLinkFunctions';
 
 const PlaidLink = (props) => {
   var linkToken = props.token
@@ -39,7 +40,6 @@ const PlaidLink = (props) => {
     @returns: array of transaction json objects*/
     
     API.get('getransactionsapi', '/transactions').then(res => {
-      console.log(res.msg.transactions);
       const trx = res.msg.transactions
       const data = {
         body: {
@@ -47,6 +47,10 @@ const PlaidLink = (props) => {
         }
       }
       API.post('cleanandcategorizeapi', '/cleanandcategorize', data).then(res => {
+        // jsonParseResults(res.cleaned, res.sortedTransactions, userInfo);
+        // userInfo.updateCategories(res.categories);
+        // userInfo.updateKeywords(res.keywords)
+        
         var transactions = []
         var sortedTransactions = []
         var i;
@@ -65,8 +69,6 @@ const PlaidLink = (props) => {
           }
           sortedTransactions.push(cat);
         };
-        console.log(res.cleaned)
-        console.log(transactions)
         userInfo.receiveSortedArray(sortedTransactions);
         userInfo.updateCategories(res.categories);
         userInfo.updateKeywords(res.keywords)

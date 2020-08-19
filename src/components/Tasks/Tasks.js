@@ -40,6 +40,9 @@ export default function Tasks(props) {
     <Table className={classes.table}>
       <TableBody>
         {tasks.map((value) => {
+            /* Renders a row with the important information 
+            for each transaction. This exists in both 
+            sorted and unhandled tables.*/
             return (
               <TableRow>
                 <TableCell>{value.name}</TableCell>

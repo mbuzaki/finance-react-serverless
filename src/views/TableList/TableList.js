@@ -50,24 +50,6 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-// const [unhandled, setUnhandled] = useState([])
-
-// const collectTransactions = () => {
-//   const trx = userInfo.transactions;
-//   var rendering = []
-//   var i;
-//   for(i=0; i < trx.length; i++){
-//     if(trx[i].category === 'unhandled'){
-//       t = [];
-//       var name = trx[i].name;
-//       var data = trx[i].date;
-//       var category = 'unhandled';
-//       var amt = trx[i].amt;
-//       rendering.push(t);
-//     }
-//   }
-// }
-
 export default function TableList() {
   const classes = useStyles();
   const userInfo = useContext(store)
@@ -78,6 +60,11 @@ export default function TableList() {
               title="Sorted Transactions"
               headerColor="primary"
               tabs={userInfo.categories.map(value => {
+                /* Renders a tab for each category that
+                exists in the categories global state array.
+                For each of those category tabs, it grabs the 
+                sorted transactions from the 2D array in the
+                same respective array spot. */
                 var index = userInfo.categories.indexOf(value)
                 var categoryTrx = userInfo.sortedTransactions[index]
                 return(
@@ -106,11 +93,8 @@ export default function TableList() {
               tableHead={["Name", "Date", "Category", "Amount"]}
               tableData={userInfo.transactions.filter(item =>
                 item.category === 'unhandled').map((trx) => {
-                  if(trx.category === 'unhandled'){
                     return [trx.name, trx.date, trx.category, trx.amt]
-                  }
-                // wow I just destroyed that entire func
-                // up there with a one-liner
+                    // Wow this two-liner is so sick
               })}
             />
           </CardBody>

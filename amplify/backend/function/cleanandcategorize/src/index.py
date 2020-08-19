@@ -30,9 +30,11 @@ def handler(event, context):
   transactions = json.loads(event['body'])
   transactions = transactions['transactions']
 
-  # iterates array of transactions and grabs pertinent information
+  # Iterates array of transactions and grabs pertinent information
   cleaned = []
+  # Make a nested list for each existing category using list comprehension. So sick
   categorized = [[] for i in categories]
+
   for obj in transactions:
     amt = obj['amount']
     date = obj['date']
@@ -43,7 +45,9 @@ def handler(event, context):
     Iterates through keywords nested array. If the
     merchant name exists in any of the keyword sub-arrays,
     then use that index to grab the name of the category
-    in the categories list
+    in the categories list. Also adds that Transaction
+    object to a 2D list for each sorted Transaction 
+    by category. Uses same indexing method.
     '''
     for i in range(len(categories)):
       keywordsList = keywords[i]
@@ -53,10 +57,13 @@ def handler(event, context):
         categorized[i].append(t.toJSON())
         cleaned.append(t.toJSON()) 
         break
-      
+    '''
+    Catches the unsorted transactions and adds its JSON 
+    object to the 'cleaned' list
+    '''
     if category == 'unhandled':
       t = Transaction(amt, date, name, merchant_name, category)
-      cleaned.append(t.toJSON()) 
+      cleaned.append(t.toJSON())
   
   msg = {
     'statusCode': 200,
