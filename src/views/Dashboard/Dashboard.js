@@ -215,7 +215,7 @@ export default function Dashboard() {
               />
             </CardHeader>
             <CardBody>
-              <h4 className={classes.cardTitle}>hello bert</h4>
+              <h4 className={classes.cardTitle}>Time Series Spending</h4>
               <p className={classes.cardCategory}>
                 <span className={classes.successText}>
                   <ArrowUpward className={classes.upArrowCardCategory} /> 55%
@@ -235,7 +235,16 @@ export default function Dashboard() {
             <CardHeader color="warning">
               <ChartistGraph
                 className="ct-chart"
-                data={userInfo.data}
+                data={{labels: userInfo.categories,
+                       series: [userInfo.sortedTransactions.map(value => {
+                         return(
+                          value.reduce((total, cur) => {
+                            console.log('total' + total)
+                            console.log('cur' + cur.amt)
+                            return (total + cur.amt)
+                          }, 0)
+                         )  
+                       })]}}
                 type="Bar"
                 options={emailsSubscriptionChart.options}
                 responsiveOptions={emailsSubscriptionChart.responsiveOptions}
