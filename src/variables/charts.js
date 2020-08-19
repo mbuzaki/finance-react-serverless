@@ -70,23 +70,6 @@ const dailySalesChart = {
 // #############################
 
 const emailsSubscriptionChart = {
-  data: {
-    labels: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "Mai",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
-    ],
-    series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
-  },
   options: {
     axisX: {
       showGrid: false
@@ -135,44 +118,17 @@ const emailsSubscriptionChart = {
 // #############################
 
 const completedTasksChart = {
-  data: {
-    labels: ["12am", "3pm", "6pm", "9pm", "12pm", "3am", "6am", "9am"],
-    series: [[230, 750, 450, 300, 280, 240, 200, 190]]
-  },
   options: {
-    lineSmooth: Chartist.Interpolation.cardinal({
-      tension: 0
-    }),
-    low: 0,
-    high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-    chartPadding: {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0
-    }
+    donut: true,
+    donutWidth: 30
   },
   animation: {
     draw: function(data) {
-      if (data.type === "line" || data.type === "area") {
-        data.element.animate({
-          d: {
-            begin: 600,
-            dur: 700,
-            from: data.path
-              .clone()
-              .scale(1, 0)
-              .translate(0, data.chartRect.height())
-              .stringify(),
-            to: data.path.clone().stringify(),
-            easing: Chartist.Svg.Easing.easeOutQuint
-          }
-        });
-      } else if (data.type === "point") {
+      if (data.type === "pie") {
         data.element.animate({
           opacity: {
-            begin: (data.index + 1) * delays,
-            dur: durations,
+            begin: (data.index + 1) * delays2,
+            dur: durations2,
             from: 0,
             to: 1,
             easing: "ease"
@@ -180,7 +136,21 @@ const completedTasksChart = {
         });
       }
     }
-  }
+  },
+  responsiveOptions: [
+    ['screen and (min-width: 640px)', {
+      chartPadding: 10,
+      labelOffset: 50,
+      labelDirection: 'explode',
+      labelInterpolationFnc: function(value) {
+        return value;
+      }
+    }],
+    ['screen and (min-width: 1024px)', {
+      labelOffset: 50,
+      chartPadding: 20
+    }]
+  ]
 };
 
 module.exports = {

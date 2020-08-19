@@ -265,9 +265,17 @@ export default function Dashboard() {
             <CardHeader color="danger">
               <ChartistGraph
                 className="ct-chart"
-                data={completedTasksChart.data}
-                type="Line"
+                data={{labels: userInfo.categories,
+                       series: userInfo.sortedTransactions.map(value => {
+                      // Doesnt get old
+                        return(
+                        value.reduce((total, cur) => {
+                          return (total + cur.amt)}, 0)
+                        )  
+                  })}}
+                type="Pie"
                 options={completedTasksChart.options}
+                responsiveOptions={completedTasksChart.responsiveOptions}
                 listener={completedTasksChart.animation}
               />
             </CardHeader>
