@@ -1,4 +1,6 @@
 import React, {createContext, useReducer} from 'react';
+import { reducer, actions } from './reducers/userInfoReducer';
+import { StaticRouter } from 'react-router-dom';
 
 const initialState = {
     transactions: [],
@@ -24,35 +26,8 @@ const initialState = {
       }
 };
 
-const actions = {
-  updateTransactions: "UPDATE_TRANSACTIONS",
-  receiveTransactions: "RECEIVE_TRANSACTIONS",
-  updateCategories: "UPDATE_CATEGORIES",
-  updateKeywords: "UPDATE_KEYWORDS",
-  updateData: "UPDATE_DATA",
-  receiveSortedArray: "UPDATE_SORTED"
-};
-
 const store = createContext(initialState);
 const { Provider } = store;
-
-const reducer = (state, action) => {
-  switch(action.type) {
-    case actions.updateTransactions:
-      // Adds one or more transactions to the provider props
-      return {...state, transactions: state.transactions.push(action.payload)};
-    case actions.receiveTransactions:
-      return {...state, transactions: action.payload};
-    case actions.updateCategories:
-      return {...state, categories: action.payload};
-    case actions.updateKeywords:
-      return {...state, keywords: action.payload};
-    case actions.receiveSortedArray:
-      return {...state, sortedTransactions: action.payload}
-    default:
-      return {...state};
-  };
-}
 
 const StateProvider = ( { children } ) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -62,23 +37,7 @@ const StateProvider = ( { children } ) => {
     categories: state.categories,
     keywords: state.keywords,
     sortedTransactions: state.sortedTransactions,
-    data: {
-      labels: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "Mai",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-      ],
-      series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 500]]
-    },
+    data: state.data,
     updateTransactions: value => {dispatch(
       {type: actions.updateTransactions, payload: value})
     },
