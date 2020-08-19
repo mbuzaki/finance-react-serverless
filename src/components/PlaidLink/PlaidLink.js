@@ -47,32 +47,10 @@ const PlaidLink = (props) => {
         }
       }
       API.post('cleanandcategorizeapi', '/cleanandcategorize', data).then(res => {
-        // jsonParseResults(res.cleaned, res.sortedTransactions, userInfo);
-        // userInfo.updateCategories(res.categories);
-        // userInfo.updateKeywords(res.keywords)
-        
-        var transactions = []
-        var sortedTransactions = []
-        var i;
-        var j;
-        var item;
-        for(i = 0; i < res.cleaned.length; i++){
-          item = JSON.parse(res.cleaned[i]);
-          transactions.push(item);
-        };
-        for(i = 0; i < res.sortedTransactions.length; i++){
-          var subArray = res.sortedTransactions[i]
-          var cat = []
-          for(j=0; j < subArray.length; j++){ 
-            item = JSON.parse(subArray[j]);
-            cat.push(item);
-          }
-          sortedTransactions.push(cat);
-        };
-        userInfo.receiveSortedArray(sortedTransactions);
+        jsonParseResults(res.cleaned, res.sortedTransactions,
+                userInfo.receiveSortedArray, userInfo.receiveTransactions);
         userInfo.updateCategories(res.categories);
         userInfo.updateKeywords(res.keywords)
-        userInfo.receiveTransactions(transactions);
       })
     });
   }
