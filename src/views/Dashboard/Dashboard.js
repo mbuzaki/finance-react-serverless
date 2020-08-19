@@ -237,12 +237,10 @@ export default function Dashboard() {
                 className="ct-chart"
                 data={{labels: userInfo.categories,
                        series: [userInfo.sortedTransactions.map(value => {
+                        // I cant describe how much I love these array funcs
                          return(
                           value.reduce((total, cur) => {
-                            console.log('total' + total)
-                            console.log('cur' + cur.amt)
-                            return (total + cur.amt)
-                          }, 0)
+                            return (total + cur.amt)}, 0)
                          )  
                        })]}}
                 type="Bar"
