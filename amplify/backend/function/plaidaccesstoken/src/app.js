@@ -64,7 +64,7 @@ app.post('/accessToken', function(request, res, next) {
         categories: ['restaurants', 'travel', 'fun'],
         categoryKeywords: [['Starbucks', 'McDonald\'s', 'KFC'],
                            [ 'Uber', 'Sparkfun'],
-                           ['United Airlines', 'Tectra Inc', 'Touchstone', 'Madison Bicycle Shop']
+                           ['United Airlines', 'Touchstone', 'Madison Bicycle Shop']
                           ]
       }
     }
