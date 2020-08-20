@@ -142,7 +142,9 @@ const completedTasksChart = {
       chartPadding: 10,
       labelOffset: 50,
       labelDirection: 'explode',
-      
+      labelInterpolationFnc: function(value) {
+        return value;
+      }
     }],
     ['screen and (min-width: 1024px)', {
       labelOffset: 50,

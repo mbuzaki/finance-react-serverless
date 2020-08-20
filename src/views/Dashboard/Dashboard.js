@@ -80,41 +80,44 @@ export default function Dashboard() {
     } catch (err) {console.log({err})};
   }
 
-  function addCategory() {
-    // Adds new category to existing list in DynamoDb
-    // @trigger: Test Add Category button
+  // function addCategory() {
+  //   // Adds new category to existing list in DynamoDb
+  //   // @trigger: Test Add Category button
 
-    /* All categories will be held in state because they will be
-    used to render data. When a new category is made, append it to
-    the array and trigger the API when the user exits the view. We will
-    use a React lifecycle method most likely. This will keep us from 
-    invoking the lambda like 8 consecutive times when they add several
-    categories in one visit. When a category is made, the function (as
-    of right now) also adds a blank array meant to be that respective
-    categories keywords. */
+  //   /* All categories will be held in state because they will be
+  //   used to render data. When a new category is made, append it to
+  //   the array and trigger the API when the user exits the view. We will
+  //   use a React lifecycle method most likely. This will keep us from 
+  //   invoking the lambda like 8 consecutive times when they add several
+  //   categories in one visit. When a category is made, the function (as
+  //   of right now) also adds a blank array meant to be that respective
+  //   categories keywords. */
 
-    const categories = ['restaurants', 'travel', 'fun', 'groceries']
-    const kw = [['Starbucks', 'McDonald\'s', 'KFC'],
-                [ 'Uber', 'Sparkfun'],
-                ['United Airlines', 'Tectra Inc', 'Touchstone', 'Madison Bicycle Shop'],
-                ['Tectra Inc']
-               ]
-    var data = {
-      body:{
-        categories: categories,
-        kw: kw
-      }
-    }
-    // All test data
+  //   const categories = ['restaurants', 'travel', 'fun', 'groceries']
+  //   const kw = [['chiptole', 'wingstop'],
+  //               ['76', 'shell', 'chevron'],
+  //               ['campus bottle'],
+  //               ['california fresh']
+  //              ]
+  //   var data = {
+  //     body:{
+  //       categories: categories,
+  //       kw: kw
+  //     }
+  //   }
+  //   // All test data
 
-    userInfo.updateCategories(categories);
-    userInfo.updateKeywords(kw);
+  //   API.post('categoriesApi', '/addCategory', data).then(res => {
+  //     console.log(res);
+  //   })
+  // }
 
-    API.post('categoriesApi', '/addCategory', data).then(res => {
-      console.log(res);
-    })
+  function updateTransactions() {
+    var value = 'foob'
+
+    userInfo.updateTransactions(value);
+    console.log(userInfo);
   }
-
 
 
   return (
@@ -192,7 +195,8 @@ export default function Dashboard() {
                 Just Updated
               </div>
             </CardFooter> */}
-            <button onClick={addCategory}>Test Add Category</button>
+            <button onClick={updateTransactions}>Test Context Reducer</button>
+            <button onClick={console.log('uncomment')}>Test Add Category</button>
             <button onClick={getLinkToken}>Get Link Token</button>
             <PlaidLink token={linkToken} />
           </Card>
@@ -201,7 +205,7 @@ export default function Dashboard() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={4}>
           <Card chart>
-            <CardHeader color="danger">
+            <CardHeader color="success">
               <ChartistGraph
                 className="ct-chart"
                 data={dailySalesChart.data}
@@ -228,7 +232,7 @@ export default function Dashboard() {
         </GridItem>
         <GridItem xs={12} sm={12} md={4}>
           <Card chart>
-            <CardHeader color="primary">
+            <CardHeader color="warning">
               <ChartistGraph
                 className="ct-chart"
                 data={{labels: userInfo.categories,
@@ -258,7 +262,7 @@ export default function Dashboard() {
         </GridItem>
         <GridItem xs={12} sm={12} md={4}>
           <Card chart>
-            <CardHeader color="info">
+            <CardHeader color="danger">
               <ChartistGraph
                 className="ct-chart"
                 data={{labels: userInfo.categories,
