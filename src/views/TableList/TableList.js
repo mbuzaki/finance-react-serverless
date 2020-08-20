@@ -18,6 +18,8 @@ import Tasks from "components/Tasks/Tasks.js";
 
 import { store } from '../../store.js'
 
+import { API } from 'aws-amplify';
+
 const styles = {
   cardCategoryWhite: {
     "&,& a,& a:hover,& a:focus": {
@@ -51,11 +53,52 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function TableList() {
+
+  function addCategory() {
+    // Adds new category to existing list in DynamoDb
+    // @trigger: Test Add Category button
+
+    /* All categories will be held in state because they will be
+    used to render data. When a new category is made, append it to
+    the array and trigger the API when the user exits the view. We will
+    use a React lifecycle method most likely. This will keep us from 
+    invoking the lambda like 8 consecutive times when they add several
+    categories in one visit. When a category is made, the function (as
+    of right now) also adds a blank array meant to be that respective
+    categories keywords. */
+
+    const categories = ['restaurants', 'travel', 'fun', 'groceries']
+    const kw = [['Starbucks', 'McDonald\'s', 'KFC'],
+                [ 'Uber', 'Sparkfun'],
+                ['United Airlines', 'Tectra Inc', 'Touchstone', 'Madison Bicycle Shop'],
+                ['Tectra Inc']
+               ]
+    var data = {
+      body:{
+        categories: categories,
+        kw: kw
+      }
+    }
+    // All test data
+
+    userInfo.updateCategories(categories);
+    userInfo.updateKeywords(kw);
+    var newSorted = userInfo.sortedTransactions;
+    newSorted.push([])
+    userInfo.receiveSortedArray(newSorted)
+
+    API.post('categoriesApi', '/addCategory', data).then(res => {
+      console.log(res);
+    })
+  }
+
   const classes = useStyles();
   const userInfo = useContext(store)
+
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
+        <button onClick={addCategory}>Add Category</button>
         <CustomTabs
               title="Sorted Transactions"
               headerColor="primary"
