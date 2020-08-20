@@ -120,7 +120,7 @@ const emailsSubscriptionChart = {
 const completedTasksChart = {
   options: {
     donut: true,
-    donutWidth: 30
+    donutWidth: 30,
   },
   animation: {
     draw: function(data) {
@@ -139,14 +139,14 @@ const completedTasksChart = {
   },
   responsiveOptions: [
     ['screen and (min-width: 640px)', {
-      chartPadding: 10,
-      labelOffset: 40,
+      chartPadding:0,
+      labelOffset: 5,
       labelDirection: 'explode',
       
     }],
     ['screen and (min-width: 1024px)', {
-      labelOffset: 50,
-      chartPadding: 20
+      labelOffset: 30,
+      chartPadding: 0
     }]
   ]
 };
