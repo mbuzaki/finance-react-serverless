@@ -140,7 +140,7 @@ const completedTasksChart = {
   responsiveOptions: [
     ['screen and (min-width: 640px)', {
       chartPadding: 10,
-      labelOffset: 50,
+      labelOffset: 40,
       labelDirection: 'explode',
       
     }],

@@ -70,7 +70,7 @@ export default function TableList() {
     const categories = ['restaurants', 'travel', 'fun', 'groceries']
     const kw = [['Starbucks', 'McDonald\'s', 'KFC'],
                 [ 'Uber', 'Sparkfun'],
-                ['United Airlines', 'Tectra Inc', 'Touchstone', 'Madison Bicycle Shop'],
+                ['United Airlines', 'Touchstone', 'Madison Bicycle Shop'],
                 ['Tectra Inc']
                ]
     var data = {
