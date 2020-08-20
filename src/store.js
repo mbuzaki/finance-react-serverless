@@ -7,23 +7,7 @@ const initialState = {
     categories: [],
     keywords: [],
     sortedTransactions:[],
-    data: {
-        labels: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "Mai",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
-        ],
-        series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
-      }
+    data: {}
 };
 
 const store = createContext(initialState);
