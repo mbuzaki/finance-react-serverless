@@ -16,16 +16,12 @@ var delays2 = 80,
 // #############################
 
 const dailySalesChart = {
-  data: {
-    labels: ["M", "T", "W", "T", "F", "S", "S"],
-    series: [[12, 17, 7, 17, 23, 18, 38]]
-  },
   options: {
     lineSmooth: Chartist.Interpolation.cardinal({
       tension: 0
     }),
     low: 0,
-    high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+    high: 800, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
     chartPadding: {
       top: 0,
       right: 0,
@@ -120,7 +116,7 @@ const emailsSubscriptionChart = {
 const completedTasksChart = {
   options: {
     donut: true,
-    donutWidth: 30,
+    donutWidth: 30
   },
   animation: {
     draw: function(data) {

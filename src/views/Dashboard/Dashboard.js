@@ -45,6 +45,7 @@ import {
 } from "variables/charts.js";
 
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
+import { makeTimeSeries } from "./functions/makeTimeSeries.js";
 
 const useStyles = makeStyles(styles);
 
@@ -79,43 +80,6 @@ export default function Dashboard() {
       console.log(userInfo)
     } catch (err) {console.log({err})};
   }
-
-  function addCategory() {
-    // Adds new category to existing list in DynamoDb
-    // @trigger: Test Add Category button
-
-    /* All categories will be held in state because they will be
-    used to render data. When a new category is made, append it to
-    the array and trigger the API when the user exits the view. We will
-    use a React lifecycle method most likely. This will keep us from 
-    invoking the lambda like 8 consecutive times when they add several
-    categories in one visit. When a category is made, the function (as
-    of right now) also adds a blank array meant to be that respective
-    categories keywords. */
-
-    const categories = ['restaurants', 'travel', 'fun', 'groceries']
-    const kw = [['Starbucks', 'McDonald\'s', 'KFC'],
-                [ 'Uber', 'Sparkfun'],
-                ['United Airlines', 'Tectra Inc', 'Touchstone', 'Madison Bicycle Shop'],
-                ['Tectra Inc']
-               ]
-    var data = {
-      body:{
-        categories: categories,
-        kw: kw
-      }
-    }
-    // All test data
-
-    userInfo.updateCategories(categories);
-    userInfo.updateKeywords(kw);
-
-    API.post('categoriesApi', '/addCategory', data).then(res => {
-      console.log(res);
-    })
-  }
-
-
 
   return (
     <div>
@@ -192,7 +156,6 @@ export default function Dashboard() {
                 Just Updated
               </div>
             </CardFooter> */}
-            <button onClick={addCategory}>Test Add Category</button>
             <button onClick={getLinkToken}>Get Link Token</button>
             <PlaidLink token={linkToken} />
           </Card>
@@ -204,7 +167,7 @@ export default function Dashboard() {
             <CardHeader color="danger">
               <ChartistGraph
                 className="ct-chart"
-                data={dailySalesChart.data}
+                data={makeTimeSeries(userInfo.transactions)}
                 type="Line"
                 options={dailySalesChart.options}
                 listener={dailySalesChart.animation}
@@ -332,21 +295,16 @@ export default function Dashboard() {
         <GridItem xs={12} sm={12} md={6}>
           <Card>
             <CardHeader color="warning">
-              <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
+              <h4 className={classes.cardTitleWhite}>Planned Expenditures</h4>
               <p className={classes.cardCategoryWhite}>
-                New employees on 15th September, 2016
+                Reference these for planning
               </p>
             </CardHeader>
             <CardBody>
               <Table
                 tableHeaderColor="warning"
-                tableHead={["ID", "Name", "Salary", "Country"]}
-                tableData={[
-                  ["1", "Dakota Rice", "$36,738", "Niger"],
-                  ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                  ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                  ["4", "Philip Chaney", "$38,735", "Korea, South"]
-                ]}
+                tableHead={["Name", "Est. Date", "Category", "Amount"]}
+                tableData={[[]]}
               />
             </CardBody>
           </Card>
