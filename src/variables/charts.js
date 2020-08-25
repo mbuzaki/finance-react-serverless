@@ -21,7 +21,7 @@ const dailySalesChart = {
       tension: 0
     }),
     low: 0,
-    high: 800, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+    high: 100, // creative tim: we recommend you to set the high as the biggest value + something for a better look
     chartPadding: {
       top: 0,
       right: 0,
@@ -71,7 +71,7 @@ const emailsSubscriptionChart = {
       showGrid: false
     },
     low: 0,
-    high: 1000,
+    high: 150,
     chartPadding: {
       top: 0,
       right: 5,
@@ -116,7 +116,8 @@ const emailsSubscriptionChart = {
 const completedTasksChart = {
   options: {
     donut: true,
-    donutWidth: 30
+    donutWidth: 15,
+    chartPadding: 70
   },
   animation: {
     draw: function(data) {
@@ -141,8 +142,8 @@ const completedTasksChart = {
       
     }],
     ['screen and (min-width: 1024px)', {
-      labelOffset: 30,
-      chartPadding: 0
+      labelOffset: 15,
+      chartPadding: 15
     }]
   ]
 };
