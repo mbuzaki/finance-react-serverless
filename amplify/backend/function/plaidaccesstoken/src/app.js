@@ -62,9 +62,10 @@ app.post('/accessToken', function(request, res, next) {
         id: 'hunchoquavo',
         accessToken: ACCESS_TOKEN,
         categories: ['restaurants', 'travel', 'fun'],
-        categoryKeywords: [['Starbucks', 'McDonald\'s', 'KFC'],
-                           [ 'Uber', 'Sparkfun'],
-                           ['United Airlines', 'Touchstone', 'Madison Bicycle Shop']
+        categoryKeywords: [['Starbucks', 'McDonald\'s', 'KFC', 'High St Deli', 'Tacqueria Santa Cruz'],
+                           [ 'Uber', 'Sparkfun', 'Chevron', 'Shell'],
+                           ['Campus Bottle', 'Touchstone', 'Madison Bicycle Shop',
+                          'Avila Beach Golf Club', 'Morro Bay Golf Club']
                           ]
       }
     }
