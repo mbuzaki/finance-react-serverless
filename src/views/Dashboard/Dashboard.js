@@ -89,9 +89,13 @@ export default function Dashboard() {
               <CardIcon color="warning">
                 <Icon>content_copy</Icon>
               </CardIcon>
-              <p className={classes.cardCategory}>Used Space</p>
+              <p className={classes.cardCategory}>% of Monthly Estimate</p>
               <h3 className={classes.cardTitle}>
-                49/50 <small>GB</small>
+              {Math.round((userInfo.transactions.reduce((total, cur) => {
+                  return(
+                    total = total + cur.amt
+                   )}, 0) / 850)* 100)}
+                   <small>%</small>
               </h3>
             </CardHeader>
             <CardFooter stats>
@@ -112,8 +116,13 @@ export default function Dashboard() {
               <CardIcon color="success">
                 <Store />
               </CardIcon>
-              <p className={classes.cardCategory}>Revenue</p>
-              <h3 className={classes.cardTitle}>$34,245</h3>
+              <p className={classes.cardCategory}>Spending To-Date</p>
+              <h3 className={classes.cardTitle}>
+                {userInfo.transactions.reduce((total, cur) => {
+                  return(
+                    total = total + cur.amt
+                   )}, 0)}
+              </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -129,8 +138,10 @@ export default function Dashboard() {
               <CardIcon color="danger">
                 <Icon>info_outline</Icon>
               </CardIcon>
-              <p className={classes.cardCategory}>Fixed Issues</p>
-              <h3 className={classes.cardTitle}>75</h3>
+              <p className={classes.cardCategory}>Total Expenditures</p>
+              <h3 className={classes.cardTitle}>
+                {userInfo.transactions.length}
+              </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
