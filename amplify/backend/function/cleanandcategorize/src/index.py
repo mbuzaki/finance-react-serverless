@@ -30,17 +30,21 @@ def handler(event, context):
   transactions = json.loads(event['body'])
   transactions = transactions['transactions']
 
-  # Iterates array of transactions and grabs pertinent information
   cleaned = []
-  # Make a nested list for each existing category using list comprehension. So sick
+
+  # Make a nested list for each existing category using list comprehension.
+  # So sick..
   categorized = [[] for i in categories]
 
   for obj in transactions:
     amt = obj['amount']
-    date = obj['date']
+    # date = obj['date']
     name = obj['name']
     merchant_name = obj['merchant_name']
     category = 'unhandled'
+    
+    date = obj['date'].split('-')
+    date = '-'.join(date[1:])
     '''
     Iterates through keywords nested array. If the
     merchant name exists in any of the keyword sub-arrays,
