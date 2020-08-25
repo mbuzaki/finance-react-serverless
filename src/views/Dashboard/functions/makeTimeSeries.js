@@ -16,9 +16,10 @@ const makeTimeSeries = (trx) => {
         }
         
     });
-    timeseries.push(sum);
-    console.log(date)
+    console.log('time series and date')
     console.log(timeseries)
+    console.log(date)
+    timeseries.push(sum);
     return { labels: [date], series: [timeseries] };
 }
 
