@@ -77,7 +77,6 @@ export default function Dashboard() {
       const hw = await API.post('plaidapi', '/plaidLinkToken');
       const token = hw.link_token;
       setLinkToken(token);
-      console.log(userInfo)
     } catch (err) {console.log({err})};
   }
 

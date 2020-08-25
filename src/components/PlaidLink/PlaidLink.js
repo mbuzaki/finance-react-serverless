@@ -4,6 +4,7 @@ import { API } from "aws-amplify";
 // Import Context
 import { store } from '../../store.js'
 import { jsonParseResults } from './PlaidLinkFunctions';
+import { fakedata } from './fakedata.js';
 
 const PlaidLink = (props) => {
   var linkToken = props.token
@@ -41,10 +42,10 @@ const PlaidLink = (props) => {
     
     API.get('getransactionsapi', '/transactions').then(res => {
       const trx = res.msg.transactions
-      console.log(trx)
+      
       const data = {
         body: {
-          transactions: trx
+          transactions: fakedata
         }
       }
       API.post('cleanandcategorizeapi', '/cleanandcategorize', data).then(res => {
@@ -52,8 +53,10 @@ const PlaidLink = (props) => {
                 userInfo.receiveSortedArray, userInfo.receiveTransactions);
         userInfo.updateCategories(res.categories);
         userInfo.updateKeywords(res.keywords)
+        console.log('this is what I want')
+
+
         console.log(res.cleaned);
-        console.log(res.categories)
       })
     });
   }
