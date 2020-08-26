@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { usePlaidLink } from 'react-plaid-link';
 import { API } from "aws-amplify";
 // Import Context
@@ -10,7 +10,7 @@ const PlaidLink = (props) => {
   var linkToken = props.token
   const userInfo = useContext(store)
   
-  const onSuccess = function(token, metadata) {
+  const onSuccess = function(token) {
     // This function is automatically called when the user
     // properly authenticates his or her self. The "token"
     // parameter is handed over straight from the Link, so
