@@ -13,6 +13,11 @@ import styles from "assets/jss/material-dashboard-react/components/tableStyle.js
 const useStyles = makeStyles(styles);
 
 export default function CustomTable(props) {
+  const onDragStart = (ev, id) => {
+    // Saves the data in this component. We will
+    // grab it from dataTransfer when we drop it
+    ev.dataTransfer.setData('text/plain',id);
+  }
   const classes = useStyles();
   const { tableHead, tableData, tableHeaderColor } = props;
   return (
@@ -37,7 +42,11 @@ export default function CustomTable(props) {
         <TableBody>
           {tableData.map((prop, key) => {
             return (
-              <TableRow key={key} className={classes.tableBodyRow}>
+              // I can just say draggable and I can drag it.
+              // Facebook is out their tree for this one
+              <TableRow key={key} draggable
+              onDragStart={(e) => onDragStart(e, prop)}
+              className={classes.tableBodyRow}>
                 {prop.map((prop, key) => {
                   return (
                     <TableCell className={classes.tableCell} key={key}>
