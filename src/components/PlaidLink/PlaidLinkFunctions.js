@@ -42,6 +42,7 @@ const jsonParseResults = (cleaned,
     };
     receiveSortedArray(sortedTransactionsResult);
     receiveTransactions(transactions);
+    console.log(transactions)
 }
 
 export { jsonParseResults };
