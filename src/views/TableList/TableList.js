@@ -72,7 +72,7 @@ export default function TableList() {
                 [ 'Uber', 'Sparkfun', 'Chevron', 'Shell'],
                 ['Campus Bottle', 'Touchstone', 'Madison Bicycle Shop',
                   'Avila Beach Golf Club', 'Morro Bay Golf Club'],
-                ['Tectra Inc']
+                ['Ralphs']
                ]
     var data = {
       body:{
@@ -117,6 +117,7 @@ export default function TableList() {
                   tabContent: (
                     <Tasks
                       tasks={categoryTrx}
+                      categoryIndex={index}
                     />
                   )}
                 )
@@ -134,10 +135,10 @@ export default function TableList() {
           <CardBody>
             <Table
               tableHeaderColor="primary"
-              tableHead={["Name", "Date", "Category", "Amount"]}
+              tableHead={["#", "Name", "Date", "Category", "Amount"]}
               tableData={userInfo.transactions.filter(item =>
                 item.category === 'unhandled').map((trx) => {
-                    return [trx.name, trx.date, trx.category, trx.amt]
+                    return [trx.id, trx.name, trx.date, trx.category, trx.amt]
                     // Wow this two-liner is so sick
               })}
             />

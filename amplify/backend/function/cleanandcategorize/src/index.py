@@ -6,12 +6,13 @@ class Transaction():
   # analyses. For any future work, this can be modified
   # to hold the info we want
  
-  def __init__(self, amt, date, name, merchant_name, category='unhandled'):
+  def __init__(self, amt, date, name, merchant_name, id_number, category='unhandled'):
     self.amt = amt
     self.date = date
     self.name = name
     self.merchantName = merchant_name
     self.category = category
+    self.id = id_number
     
   def toJSON(self):
     return json.dumps(self, default=lambda x: x.__dict__, indent=2)
@@ -35,14 +36,14 @@ def handler(event, context):
   # Make a nested list for each existing category using list comprehension.
   # So sick..
   categorized = [[] for i in categories]
+  id_number = 0
 
   for obj in transactions:
+    id_number += 1
     amt = obj['amount']
-    # date = obj['date']
     name = obj['name']
     merchant_name = obj['merchant_name']
     category = 'unhandled'
-    
     date = obj['date'].split('-')
     date = '-'.join(date[1:])
     '''
@@ -57,7 +58,7 @@ def handler(event, context):
       keywordsList = keywords[i]
       if merchant_name in keywordsList:
         category = categories[i]
-        t = Transaction(amt, date, name, merchant_name, category)
+        t = Transaction(amt, date, name, merchant_name, id_number, category)
         categorized[i].append(t.toJSON())
         cleaned.append(t.toJSON()) 
         break
@@ -66,7 +67,7 @@ def handler(event, context):
     object to the 'cleaned' list
     '''
     if category == 'unhandled':
-      t = Transaction(amt, date, name, merchant_name, category)
+      t = Transaction(amt, date, name, merchant_name, id_number, category)
       cleaned.append(t.toJSON())
   
   msg = {
