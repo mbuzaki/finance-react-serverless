@@ -53,10 +53,6 @@ const PlaidLink = (props) => {
                 userInfo.receiveSortedArray, userInfo.receiveTransactions);
         userInfo.updateCategories(res.categories);
         userInfo.updateKeywords(res.keywords)
-        console.log('this is what I want')
-
-
-        console.log(res.cleaned);
       })
     });
   }
