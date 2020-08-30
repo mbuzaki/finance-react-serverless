@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/update",
+            "lambdaFunction": "updateCategories",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "updateCategoriesApi",
+    "apiName": "updateCategoriesApi",
+    "functionArns": [
+        {
+            "lambdaFunction": "updateCategories"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-financeserverless-dev-132253-authRole",
+        "unAuthRoleName": "amplify-financeserverless-dev-132253-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "updateCategories",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

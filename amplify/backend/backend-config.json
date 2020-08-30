@@ -76,7 +76,7 @@
 				}
 			]
 		},
-		"addCategory": {
+		"updateCategories": {
 			"build": true,
 			"providerPlugin": "awscloudformation",
 			"service": "Lambda",
@@ -163,13 +163,13 @@
 				}
 			]
 		},
-		"categoriesApi": {
+		"updateCategoriesApi": {
 			"service": "API Gateway",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": [
 				{
 					"category": "function",
-					"resourceName": "addCategory",
+					"resourceName": "updateCategories",
 					"attributes": [
 						"Name",
 						"Arn"
