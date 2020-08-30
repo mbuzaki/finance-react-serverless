@@ -1,4 +1,4 @@
-import React, { useState, useContext} from "react";
+import React, { useEffect, useContext} from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -87,14 +87,19 @@ export default function TableList() {
     var newSorted = userInfo.sortedTransactions;
     newSorted.push([])
     userInfo.receiveSortedArray(newSorted)
-
-    API.post('categoriesApi', '/addCategory', data).then(res => {
-      console.log(res);
-    })
   }
 
   const classes = useStyles();
   const userInfo = useContext(store)
+
+  useEffect(() => {
+    return () => {
+      var obj = {
+        body: { categories: userInfo.categories, kw: userInfo.keywords}
+      }
+      API.post('updateCategoriesApi', '/update', obj)
+    }
+  });
 
   return (
     <GridContainer>
