@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "storage": {
+      "UserDB": [
+        "update"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
