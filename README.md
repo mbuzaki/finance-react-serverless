@@ -16,4 +16,5 @@ I will look more into different environments on **Amplify**, there may be anothe
 
 <h3>Happy hacking</h3>
 
-<p>Also, here is a link to a [Medium article](https://medium.com/@rdavidscott1/integrating-plaid-into-a-serverless-react-app-a8094c74425) I wrote about using Plaid and Lambda</p>
+<p>Also, here is a link to a Medium articleI wrote about using Plaid and Lambda <br>
+https://medium.com/@rdavidscott1/integrating-plaid-into-a-serverless-react-app-a8094c74425 </p>
