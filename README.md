@@ -15,3 +15,5 @@ I will look more into different environments on **Amplify**, there may be anothe
 <code>npm install</code> one more time for good measure and then <code>npm start</code>
 
 <h3>Happy hacking</h3>
+
+<p>Also, here is a link to a Medium article I wrote about using Plaid and Lambda</p>
