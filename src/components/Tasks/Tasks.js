@@ -11,17 +11,12 @@ import TableCell from "@material-ui/core/TableCell";
 // core components
 import styles from "assets/jss/material-dashboard-react/components/tasksStyle.js";
 import { store } from "../../store.js";
-import { onDrop } from './functions/onDrop.js'
 
 const useStyles = makeStyles(styles);
 
 export default function Tasks(props) {
   const classes = useStyles();
   const userInfo = useContext(store)
-
-  const onDragOver = (e) => {
-    e.preventDefault();
-  }
 
   const { tasksIndexes, tasks, rtlActive } = props;
   const tableCellClasses = classnames(classes.tableCell, {
@@ -30,8 +25,7 @@ export default function Tasks(props) {
 
   return (
     <Table className={classes.table}>
-      <TableBody onDragOver={(e) => {onDragOver(e)}}
-                  onDrop={(e) => {onDrop(e, props.categoryIndex, userInfo)}}>
+      <TableBody>
         {tasks.map((value) => {
             /* Renders a row with the important information 
             for each transaction. This exists in both 

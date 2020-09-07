@@ -1,4 +1,4 @@
-const onDrop = (e, index, userInfo) => {
+const onDropFunction = (e, index, userInfo) => {
     /*
     This is the procedure triggered when an 'unhandled'
     transaction is dropped into a specified category list.
@@ -54,4 +54,4 @@ const onDrop = (e, index, userInfo) => {
     console.log(userInfo)
   }
 
-export { onDrop }
+export { onDropFunction }

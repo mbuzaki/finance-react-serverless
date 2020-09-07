@@ -25,6 +25,7 @@ const jsonParseResults = (cleaned,
     var sortedTransactionsResult = []
     var i;
     var item;
+    console.log('dbg PLF28.. cleaned', cleaned)
     for(i = 0; i < cleaned.length; i++){
         item = JSON.parse(cleaned[i]);
         transactions.push(item);
@@ -41,6 +42,7 @@ const jsonParseResults = (cleaned,
         sortedTransactionsResult.push(cat);
     };
     receiveSortedArray(sortedTransactionsResult);
+    console.log('sortedTransactions... ', sortedTransactionsResult)
     receiveTransactions(transactions);
     console.log(transactions)
 }

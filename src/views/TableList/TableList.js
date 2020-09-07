@@ -13,8 +13,9 @@ import { bugs, website, server } from "variables/general.js";
 import CustomTabs from "components/CustomTabs/CustomTabs.js";
 import BugReport from "@material-ui/icons/BugReport";
 import Code from "@material-ui/icons/Code";
-import Cloud from "@material-ui/icons/Cloud";
-import Tasks from "components/Tasks/Tasks.js";
+
+import { onDropFunction } from './functions/onDrop.js'
+
 
 import { store } from '../../store.js'
 
@@ -61,7 +62,7 @@ export default function TableList() {
     /* All categories will be held in state because they will be
     used to render data. When a new category is made, append it to
     the array and trigger the API when the user exits the view. We will
-    use a React lifecycle method most likely. This will keep us from 
+    use a React lifecycle method. This will keep us from 
     invoking the lambda like 8 consecutive times when they add several
     categories in one visit. When a category is made, the function (as
     of right now) also adds a blank array meant to be that respective
@@ -92,6 +93,8 @@ export default function TableList() {
   const classes = useStyles();
   const userInfo = useContext(store)
 
+  const tableHead = ["#", "Name", "Date", "Category", "Amount"]
+
   useEffect(() => {
     return () => {
       var obj = {
@@ -100,6 +103,10 @@ export default function TableList() {
       API.post('updateCategoriesApi', '/update', obj)
     }
   });
+
+  const onDragOver = (e) => {
+    e.preventDefault();
+  }
 
   return (
     <GridContainer>
@@ -119,12 +126,17 @@ export default function TableList() {
                 return(
                   {tabName: value,
                   tabIcon: Code,
-                  tabContent: (
-                    <Tasks
-                      tasks={categoryTrx}
+                  tabContent: 
+                    <Table 
+                      onDragOver={(e) => {onDragOver(e)}}
+                      onDrop={e => {onDropFunction(e, index, userInfo)}}
+                      tableHeaderColor="primary"
+                      tableHead={tableHead}
+                      tableData={categoryTrx.map(trx => {
+                        return [trx.id, trx.name, trx.date, trx.category, trx.amt]})}
                       categoryIndex={index}
                     />
-                  )}
+                  }
                 )
               })}
             />
@@ -140,7 +152,7 @@ export default function TableList() {
           <CardBody>
             <Table
               tableHeaderColor="primary"
-              tableHead={["#", "Name", "Date", "Category", "Amount"]}
+              tableHead={tableHead}
               tableData={userInfo.transactions.filter(item =>
                 item.category === 'unhandled').map((trx) => {
                     return [trx.id, trx.name, trx.date, trx.category, trx.amt]
