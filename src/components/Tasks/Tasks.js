@@ -7,6 +7,8 @@ import Table from "@material-ui/core/Table";
 import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+
 
 // core components
 import styles from "assets/jss/material-dashboard-react/components/tasksStyle.js";
@@ -30,7 +32,16 @@ export default function Tasks(props) {
 
   return (
     <Table className={classes.table}>
-      <TableBody onDragOver={(e) => {onDragOver(e)}}
+      <TableHead>
+        <TableRow className={classes.tableHeadRow}>
+          <TableCell>#</TableCell>
+          <TableCell>Name</TableCell>
+          <TableCell>Date</TableCell>
+          <TableCell>Category</TableCell>
+          <TableCell>Amount</TableCell>
+        </TableRow>
+      </TableHead>
+        <TableBody onDragOver={(e) => {onDragOver(e)}}
                   onDrop={(e) => {onDrop(e, props.categoryIndex, userInfo)}}>
         {tasks.map((value) => {
             /* Renders a row with the important information 
