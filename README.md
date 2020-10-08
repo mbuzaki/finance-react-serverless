@@ -1,4 +1,7 @@
 # finance-react-serverless
+<h2> Check out the Medium Article I wrote about Plaid and Serverless!</h2>
+<p>https://medium.com/@rdavidscott1/integrating-plaid-into-a-serverless-react-app-a8094c74425</p>
+
 <h3> First Things First </h3>
 Clone the repository: <code>git clone https://github.com/robscott1/finance-react-serverless.git</code>
 
@@ -15,6 +18,3 @@ I will look more into different environments on **Amplify**, there may be anothe
 <code>npm install</code> one more time for good measure and then <code>npm start</code>
 
 <h3>Happy hacking</h3>
-
-<p>Also, here is a link to a Medium article I wrote about using Plaid and Lambda <br>
-https://medium.com/@rdavidscott1/integrating-plaid-into-a-serverless-react-app-a8094c74425 </p>
