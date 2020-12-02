@@ -8,13 +8,15 @@ import Table from "components/Table/Table.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
+import Tasks from "components/Tasks/Tasks.js"
+
 
 import { bugs, website, server } from "variables/general.js";
 import CustomTabs from "components/CustomTabs/CustomTabs.js";
 import BugReport from "@material-ui/icons/BugReport";
 import Code from "@material-ui/icons/Code";
 
-import { onDropFunction } from './functions/onDrop.js'
+import { onDropFunction } from '../../components/Tasks/onDrop.js'
 
 
 import { store } from '../../store.js'
@@ -127,13 +129,10 @@ export default function TableList() {
                   {tabName: value,
                   tabIcon: Code,
                   tabContent: 
-                    <Table 
+                    <Tasks 
                       onDragOver={(e) => {onDragOver(e)}}
                       onDrop={e => {onDropFunction(e, index, userInfo)}}
-                      tableHeaderColor="primary"
-                      tableHead={tableHead}
-                      tableData={categoryTrx.map(trx => {
-                        return [trx.id, trx.name, trx.date, trx.category, trx.amt]})}
+                      tasks={categoryTrx}
                       categoryIndex={index}
                     />
                   }

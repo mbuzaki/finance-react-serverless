@@ -8,6 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
+import { onDropFunction } from './onDrop.js';
 
 
 // core components
@@ -15,6 +16,7 @@ import styles from "assets/jss/material-dashboard-react/components/tasksStyle.js
 import { store } from "../../store.js";
 
 const useStyles = makeStyles(styles);
+
 
 export default function Tasks(props) {
   const classes = useStyles();
@@ -24,6 +26,10 @@ export default function Tasks(props) {
   const tableCellClasses = classnames(classes.tableCell, {
     [classes.tableCellRTL]: rtlActive
   });
+
+  const onDragOver = (e) => {
+    e.preventDefault();
+  }
 
   return (
     <Table className={classes.table}>
@@ -37,8 +43,8 @@ export default function Tasks(props) {
         </TableRow>
       </TableHead>
         <TableBody onDragOver={(e) => {onDragOver(e)}}
-                  onDrop={(e) => {onDrop(e, props.categoryIndex, userInfo)}}>
-        {tasks.map((value) => {
+                  onDrop={(e) => {onDropFunction(e, props.categoryIndex, userInfo)}}>
+          {tasks.map((value) => {
             /* Renders a row with the important information 
             for each transaction. This exists in both 
             sorted and unhandled tables.*/
