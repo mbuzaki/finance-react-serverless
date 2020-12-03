@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
-import { onDropFunction } from './onDrop.js';
+// import { onDropFunction } from '../Table/onDrop.js/index.js';
 
 
 // core components
@@ -42,8 +42,7 @@ export default function Tasks(props) {
           <TableCell>Amount</TableCell>
         </TableRow>
       </TableHead>
-        <TableBody onDragOver={(e) => {onDragOver(e)}}
-                  onDrop={(e) => {onDropFunction(e, props.categoryIndex, userInfo)}}>
+        <TableBody>
           {tasks.map((value) => {
             /* Renders a row with the important information 
             for each transaction. This exists in both 

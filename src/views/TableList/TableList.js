@@ -16,7 +16,7 @@ import CustomTabs from "components/CustomTabs/CustomTabs.js";
 import BugReport from "@material-ui/icons/BugReport";
 import Code from "@material-ui/icons/Code";
 
-import { onDropFunction } from '../../components/Tasks/onDrop.js'
+// import { onDropFunction } from '../../components/Table/onDrop.js/index.js'
 
 
 import { store } from '../../store.js'
@@ -124,16 +124,19 @@ export default function TableList() {
                 sorted transactions from the 2D array in the
                 same respective array spot. */
                 var index = userInfo.categories.indexOf(value)
-                var categoryTrx = userInfo.sortedTransactions[index]
+                var category = userInfo.categories[index]
                 return(
                   {tabName: value,
                   tabIcon: Code,
                   tabContent: 
-                    <Tasks 
-                      onDragOver={(e) => {onDragOver(e)}}
-                      onDrop={e => {onDropFunction(e, index, userInfo)}}
-                      tasks={categoryTrx}
-                      categoryIndex={index}
+                    <Table
+                    tableHeaderColor="primary"
+                    tableHead={tableHead}
+                    categoryIndex={index}
+                    tableData={userInfo.transactions.filter(item =>
+                      item.category === category).map((trx) => {
+                          return [trx.id, trx.name, trx.date, trx.category, trx.amt]
+                      })}
                     />
                   }
                 )
