@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useContext } from "react"
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -9,6 +10,10 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 // core components
 import styles from "assets/jss/material-dashboard-react/components/tableStyle.js";
+import { onDropFunction } from "./onDrop.js";
+
+import { store } from "../../store.js";
+
 
 const useStyles = makeStyles(styles);
 
@@ -18,6 +23,12 @@ export default function CustomTable(props) {
     // grab it from dataTransfer when we drop it
     ev.dataTransfer.setData('text/plain',id);
   }
+  const onDragOver = (e) => {
+    e.preventDefault();
+  }
+
+  const userInfo = useContext(store);
+
   const classes = useStyles();
   const { tableHead, tableData, tableHeaderColor } = props;
   return (
@@ -39,7 +50,10 @@ export default function CustomTable(props) {
             </TableRow>
           </TableHead>
         ) : null}
-        <TableBody>
+        <TableBody
+          onDragOver={(e) => {onDragOver(e)}}
+          onDrop={(e) => {onDropFunction(e, props.categoryIndex, userInfo)}}
+        >
           {tableData.map((prop, key) => {
             return (
               // I can just say draggable and I can drag it.

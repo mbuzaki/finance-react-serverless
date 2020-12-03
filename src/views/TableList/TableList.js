@@ -8,13 +8,15 @@ import Table from "components/Table/Table.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
+import Tasks from "components/Tasks/Tasks.js"
+
 
 import { bugs, website, server } from "variables/general.js";
 import CustomTabs from "components/CustomTabs/CustomTabs.js";
 import BugReport from "@material-ui/icons/BugReport";
 import Code from "@material-ui/icons/Code";
 
-import { onDropFunction } from './functions/onDrop.js'
+// import { onDropFunction } from '../../components/Table/onDrop.js/index.js'
 
 
 import { store } from '../../store.js'
@@ -122,19 +124,19 @@ export default function TableList() {
                 sorted transactions from the 2D array in the
                 same respective array spot. */
                 var index = userInfo.categories.indexOf(value)
-                var categoryTrx = userInfo.sortedTransactions[index]
+                var category = userInfo.categories[index]
                 return(
                   {tabName: value,
                   tabIcon: Code,
                   tabContent: 
-                    <Table 
-                      onDragOver={(e) => {onDragOver(e)}}
-                      onDrop={e => {onDropFunction(e, index, userInfo)}}
-                      tableHeaderColor="primary"
-                      tableHead={tableHead}
-                      tableData={categoryTrx.map(trx => {
-                        return [trx.id, trx.name, trx.date, trx.category, trx.amt]})}
-                      categoryIndex={index}
+                    <Table
+                    tableHeaderColor="primary"
+                    tableHead={tableHead}
+                    categoryIndex={index}
+                    tableData={userInfo.transactions.filter(item =>
+                      item.category === category).map((trx) => {
+                          return [trx.id, trx.name, trx.date, trx.category, trx.amt]
+                      })}
                     />
                   }
                 )
